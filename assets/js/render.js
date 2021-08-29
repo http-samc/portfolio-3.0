@@ -8,7 +8,6 @@ $(document).ready(function() {
     if (!path)
         path = "README";
     var url = `https://raw.githubusercontent.com/http-samc/http-samc/main/PORTFOLIO/${path}.md`;
-    console.log(url)
     $.get(
         url,
         function(MD) {
