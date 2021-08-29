@@ -51,7 +51,7 @@
   margin-top: 50px;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, :not(.project) {
   color: var(--bs-light);
   text-decoration-line: underline;
   text-decoration-color: var(--bs-cyan);
@@ -70,6 +70,7 @@ p, ul, li, h5, h6, table {
   grid-gap: 25px;
   padding: 10px;
   grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  text-decoration: none;
 }
 
 .project {
