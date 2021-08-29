@@ -23,7 +23,11 @@ function colorLinks() {
     for (var i = 0; i < links.length; i++) {
 
         let element = links[i]; // shorthand for current text link
-        if (element.id === "github" || element.className === "project" || element.target === "_blank") {
+        if (element.target === "_blank") {
+            element.style.textDecoration = "none";
+            continue;
+        }
+        if (element.id === "github" || element.className === "project") {
             continue;
         }
         while ((elementColor === previousColor)) // avoiding repeats
