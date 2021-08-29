@@ -55,8 +55,9 @@ h1, h2, h3, h4 {
   color: var(--bs-light);
   text-decoration-line: underline;
   text-decoration-color: var(--bs-cyan);
-  text-decoration-skip-ink: none;
-  text-decoration-thickness: 5px;
+  text-decoration-skip-ink: all;
+  text-decoration-thickness: 4px;
+  margin-bottom: 1px;
 }
 
 p, ul, li, h5, h6, table {
