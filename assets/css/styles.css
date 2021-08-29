@@ -56,9 +56,14 @@ h1, h2, h3, h4, :not(.project) {
   text-decoration-line: underline;
   text-decoration-color: var(--bs-cyan);
   text-decoration-skip-ink: none;
+<<<<<<< HEAD
   text-decoration-thickness: 4px;
   margin-top: 30px;
   margin-bottom: 15px;
+=======
+  text-decoration-thickness: 3.5px;
+  margin-bottom: 1px;
+>>>>>>> parent of 53f5e8f (Update styles.css)
 }
 
 p, ul, li, h5, h6, table {
