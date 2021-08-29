@@ -51,7 +51,7 @@
   margin-top: 50px;
 }
 
-h1, h2, h3, h4, :not(.project) {
+h1, h2, h3, h4 {
   color: var(--bs-light);
   text-decoration-line: underline;
   text-decoration-color: var(--bs-cyan);
