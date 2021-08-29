@@ -1,4 +1,4 @@
-var base = "http://localhost:8080/";//https://www.smrth.dev";
+var base = "https://www.smrth.dev";
 var dynamic = $("#dynamic");
 
 $(document).ready(function() {
