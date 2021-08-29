@@ -12,7 +12,7 @@ $(document).ready(function(){
                 items += `
                 <a class="project" href="/${name}">
                     <h1 style="font-size:x-large;margin-top:0px;margin-bottom:0px">${name}</h1>
-                    <p>${repo["description"]}</p>
+                    <p style="text-decoration:none">${repo["description"]}</p>
                 </a>
                 `;
             })
