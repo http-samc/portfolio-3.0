@@ -1,5 +1,6 @@
 {
     "exclude": [
-        "http-samc"
+        "http-samc",
+        "portfolio"
     ]
 }
