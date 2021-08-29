@@ -1,4 +1,4 @@
-var base = "https://www.smrth.dev";
+var base = "https://www.smrth.dev/";
 var github = $("#github");
 
 $(document).ready(function() {

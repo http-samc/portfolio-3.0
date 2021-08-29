@@ -1,4 +1,4 @@
-var base = "https://www.smrth.dev";
+var base = "https://www.smrth.dev/";
 var dynamic = $("#dynamic");
 
 $(document).ready(function() {
