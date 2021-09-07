@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" style="background: #2c3440;color: var(--bs-light);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PyPi Download API - smrth.dev</title>
+    <meta name="theme-color" content="#2c3440">
+    <meta name="description" content="Samarth Chitgopekar's personal developer portfolio!">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../../assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="../../assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../assets/img/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../assets/img/android-chrome-512x512.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body style="background: #2c3440;">
+    <div id="page-container">
+        <div id="content-wrap">
+            <div id="navigation" style="display: flex;justify-content: space-between;"><a class="pulse animated"
+                    id="brand" href="https://www.smrth.dev/"
+                    style="/*display: flex;*//*justify-content: space-between;*//*background: #12121252;*/">smrth.dev</a>
+                <div class="d-flex align-items-center"><a data-bss-hover-animate="pulse" id="github"
+                        href="https://github.com/http-samc"><i class="fa fa-github"></i><span
+                            id="github-text">&nbsp;http-samc</span></a></div>
+            </div>
+            <section id="dynamic">
+                <h1 style="text-decoration: none;"> 🔥 PyPi download API 🔥 </h1>
+                <h3 style="text-decoration: none;"> 😱 Lost? Go back to my main site <a
+                        href="https://www.smrth.dev">here</a>.</h3>
+                <p> This API allows you to get the total amount of downloads any <a href="https://pypi.org">PyPi</a>
+                    project has gotten
+                    throughout its existence. It employs the use of <a href="https://pypistats.org/">PyPi stats</a> and
+                    <a href="https://www.npmjs.com/package/badge-maker">Badge Maker</a>. The endpoints are listed below:
+                </p>
+                <ul>
+                    <li> <b><u>/:packageName</b></u> allows you to get the total number of downloads
+                        and the total amount of days a package has been available. The JSON returned looks
+                        like: <code>
+    <br>{
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"downloads": <(int) number of downloads>,
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"days": <(int) number of days available>
+    <br>}</code><br>
+                        See an example <a href="https://www.smrth.dev/api/pypi-downloads/gendoc">here</a>.</li><br>
+                    <li> <b><u>/badge/:packageName</b></u> returns a svg representing the total number of downloads
+                        that can be used in README (or similar) files. The badge name is 'PyPi Downloads' (customizable)
+                        and the message
+                        is the exact number of downloads (with commas). To customize your badge, you can pass the
+                        following
+                        query parameters in: <ul>
+                            <li><code>labelColor</code> (body color of the left-side of the badge, defaults to
+                                <code>#555</code>,
+                                do <b>NOT</b> pass in the '#' when calling, only the hex integer)</li>
+                            <li><code>messageColor</code> (body color of right-side of the badge, defaults to
+                                <code>#4c1</code>, do <b>NOT</b> pass in the '#'
+                                when calling, only the hex integer)</li>
+                            <li><code>style</code> (style of the badge,
+                                defaults to flat, options:
+                                <code>plastic</code>,&nbsp;<code>flat</code>,&nbsp;<code>flat-square</code>,&nbsp;<code>for-the-badge</code>,&nbsp;<code>social</code>)
+                            </li>
+                            <li><code>label</code> (label of the badge, defaults to <code>PyPi Downloads'</code>)</li>
+                            See a fully customized example <a
+                                href="https://www.smrth.dev/api/pypi-downloads/badge/gendoc?labelColor=121212&messageColor=121212&style=social&label=Downloads?">here</a>,
+                            or a basic one <a href="https://www.smrth.dev/api/pypi-downloads/badge/gendoc">here</a>.
+                    </li>
+                </ul>
+                </ul>
+            </section>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+
+</html>
