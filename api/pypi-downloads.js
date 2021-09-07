@@ -82,7 +82,8 @@ module.exports = function(app) {
         request(`https://pypistats.org/api/packages/${req.params.packageName}/overall`,
         function(err, _, body) {
             if (!err) {
-                res.set('Content-Type', 'image/svg+xml');
+                //res.setHeader('content-type', 'image/svg+xml');
+                res.header("Content-Type", "image/svg+xml");
                 res.send(makeLabel(
                     getTotalDownloads(JSON.parse(body)),
                     labelColor,
