@@ -52,6 +52,19 @@
         <div id="dynamic" style="width: 50%;max-width: 750px;min-width: 300px;margin-top: 30px;">
             <h1 id="quickcite">QuickCite</h1>
 <p align="center">A lightweight Python package for autogenerating MLA citations.</p>
+
+<h2 id="it-started-with-too-many-ads">It Started With Too Many Ads</h2>
+<p>Have you ever had to create a bibliography for a school research paper? If you have, then you&#39;ve almost certainly used a site like <a href="https://www.easybib.com/">EasyBib</a>. These sites are needlessly slow and rich... with ads. When I saw <a href="https://formatically.com/">Formatically</a>&#39;s citation engine, I knew I was onto something.</p>
+<h2 id="installation">Installation</h2>
+<p>QuickCite is available on PyPI as <a href="https://pypi.org/project/QuickCite/">QuickCite</a>, where it has over 3,000 downloads. It can be installed with pip:</p>
+<p><code>$ pip install QuickCite</code></p>
+<p>The project is also open sourced on GitHub at <a href="https://github.com/http-samc/QuickCite">http-samc/QuickCite</a>.</p>
+<h2 id="what-i-learned">What I Learned</h2>
+<p>Though this project may appear to be a simple PyPI package, I really ended up learning about reverse-engineering from it. When I was using Formatically, I noticed that there was a post request being made to <code>https://formatically.com/api/website</code>. By mimicking the form data, I realised that I could simulate a user with <a href="https://pypi.org/project/requests/">requests</a>. From there, it was basic object oriented programming to flush out the module itself.</p>
+<p>I also learned how to set up a UnitTest, which I did <a href="https://github.com/http-samc/QuickCite/blob/main/TestQuickCite.py">here</a>. Though I don&#39;t set these up for every project (since I believe there&#39;s a right place and a right time to do so), this was a case where I found having tests to be quite useful.</p>
+<h2 id="extras">Extras</h2>
+<p>QuickCite is used by <a href="/projects/Cut-It">Cut-It</a>, where it provides <code>AutoCite</code> functionality.</p>
+
         </div>
     </section>
     <footer class="footer-dark" style="background: transparent;">

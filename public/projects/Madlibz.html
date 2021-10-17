@@ -52,6 +52,25 @@
         <div id="dynamic" style="width: 50%;max-width: 750px;min-width: 300px;margin-top: 30px;">
             <h1 id="madlibz">Madlibz</h1>
 <p align="center">A fun and simple Madlibs app, coded natively for Android!</p>
+
+<h2 id="madlibz-is-_____-adjective">Madlibz is _____ (adjective)!</h2>
+<p>Madlibz was created as a proof-of-concept for my understanding of native Android code. It does all the major things you&#39;d expect an app to do:</p>
+<ul>
+<li>Use <a href="https://developer.android.com/training/data-storage/shared-preferences">SharedPreferences</a> to save app information on close.</li>
+<li>Make API calls with <a href="https://developer.android.com/training/volley">Request Volley</a>.<ul>
+<li>Fun fact, the API is actually hosted on this site, check the <a href="/api/madlibz">/api/madlibz</a> endpoint!</li>
+</ul>
+</li>
+<li>Use <code>strings.xml</code> to store static string values.</li>
+<li>Use <code>anim/</code> to animate Views.</li>
+<li>Use <code>drawables</code> and <code>JSON</code> to dynamically render Views.</li>
+<li>Contain and navigate through multiple activities.</li>
+<li>Provide <code>Toast</code> notifications when things go wrong.</li>
+<li>Make Views scrollable when needed.</li>
+<li>Have &#39;polishing features&#39;, eg. images and app icon.</li>
+</ul>
+<p>The code itself is open sourced on GitHub at <a href="https://github.com/http-samc/madlibz">http-samc/madlibz</a>. If you want to run it, make sure you have a recent version of <a href="https://developer.android.com/studio">Android Studio</a> installed along with an emulator running on Android API &gt;= 30. The UI is designed to scale appropriately for both tablets and phones, so don&#39;t worry about choosing the wrong device.</p>
+
         </div>
     </section>
     <footer class="footer-dark" style="background: transparent;">
