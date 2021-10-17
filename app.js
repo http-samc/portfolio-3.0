@@ -4,7 +4,7 @@ projects.genFragment();
 
 // Now, start off by building all html pages to ./public
 const render = require('./utils/render-md');
-render.render('/Users/sam/dev/smrth.dev/content', '/Users/sam/dev/smrth.dev/public', '/Users/sam/dev/smrth.dev/templates/base.html')
+render.render('content', 'public', 'templates/base.html')
 
 // Setting up Express
 const express = require('express');
