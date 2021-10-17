@@ -11,8 +11,8 @@ function genProjectsView() {
         projectURLName = projectName.replaceAll(' ', '-');
         projectDesc = lines[1].replace('<p align="center">', '').replace('</p>', '');
         html += `
-<div class="project" style="background:#1e1e1e;border-radius:10px;padding:7px;width:60%;margin:0px auto 30px;min-width:300px">
-    <h4 style="margin-left:10px"><a href="/projects/${projectURLName}">${projectName}</a></h4>
+<div class="project" style="background:#1e1e1e;border-radius:10px;padding:7px;width:100%;margin:0px auto 15px;min-width:300px">
+    <h4 style="margin-left:10px;margin-top:10px;"><a href="/projects/${projectURLName}">${projectName}</a></h4>
     <p style="margin-left:10px">${projectDesc}</p>
 </div>
         `

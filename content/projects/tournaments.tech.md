@@ -1,2 +1,2 @@
 # Tournaments.Tech
-<p align="center">The best debate rankings website!</p>
+<p align="center">The most popular (and accurate) debate ranking site!</p>
