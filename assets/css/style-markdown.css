@@ -52,7 +52,8 @@ img:not(.ovr) {
 }
 
 code {
-    color: #C2A200;
+    color: var(--bs-light);
+    font-weight: 600;
     letter-spacing: .1ch;
 }
 

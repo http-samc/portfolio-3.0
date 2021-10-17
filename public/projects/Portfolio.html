@@ -52,6 +52,34 @@
         <div id="dynamic" style="width: 50%;max-width: 750px;min-width: 300px;margin-top: 30px;">
             <h1 id="portfolio">Portfolio</h1>
 <p align="center">The site you're on (there's more to it than you think)!</p>
+
+<h2 id="whats-this-site-for">What&#39;s This Site For?</h2>
+<p>This is my personal portfolio site. I use it to document my progress as a developer, host novel APIs for quick projects, and provide information on who I am and how to contact me.</p>
+<h2 id="whats-so-special-about-it">What&#39;s So Special About It?</h2>
+<p>I wanted a site that made it simple to write content (like this). I wanted to write in Markdown, and I found out that I could use something like <a href="https://gohugo.io">Hugo</a>, but I felt that it was too overcomplicated. Instead, I made this site. This&#39;ll make more sense if you check out the source code on GitHub at <a href="https://github.com/http-samc/smrth.dev">http-samc/smrth.dev</a>. Here&#39;s how it works:</p>
+<ol>
+<li><p>Markdown files are written inside <code>content</code> (sub directories are ok).</p>
+</li>
+<li><p><code>$ node build</code> is called, which does the following:</p>
+<ol>
+<li><p>Run the custom project hook. This looks reads the files in the <code>content/projects</code> directory and extracts a projectName and projectDescription from them. Then, it creates a html fragment at <code>fragments/projects.html</code> that is prestyled and contains a list of all my projects (this is what you see <a href="/projects">here</a> or <a href="/#projects-%F0%9F%91%A8%F0%9F%92%BB">here</a>)).</p>
+</li>
+<li><p>Next, the standard <code>render()</code> function is called. This clears <code>public/</code> and replicates the structure in <code>content/</code>, but changes <code>{name}.md</code> to <code>{name}.html</code> when replicating. The actual conversion is done by <a href="https://github.com/markedjs/marked">marked.js</a>.</p>
+<ul>
+<li><p>Before the html is fully converted, the function scans for the special placeholder operator <code>$ {...} $</code>. The <code>...</code> represents a path to an html fragment, which gets opened and replaces the special operator. The reason this exists is to keep the Markdown simple to read and enjoyable to type. Any complex html can be left in <code>fragments/</code> and will make it to the static page at runtime.</p>
+</li>
+<li><p>The resulting html is still a fragment - it needs a title, resource files, etc. It is added to <code>templates/base.html</code> by replacing the special placeholder operator (in <code>base.html</code>) <code>$ {markdown} $</code>. This template has navigation, a favicon, a title, etc. Our page is now complete and available in its corresponding location within <code>public/</code>.</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><code>$ node app</code> starts the Express.js server, which handles all routing dynamically. Pages can be accessed based on their relative path <strong>once already inside public</strong>. Your homepage can be accessed with <code>_root.html</code> inside <code>public</code>. This works for branches too: <code>public/foo/.../bar</code> can have a bunch of files that can be acceesed at <code>/foo/.../bar/{name}</code>, but accessing <code>/foo/.../bar</code> directly will result in a 404 (sent as <code>templates/404.html</code>) unless <code>public/foo/bar/_root.html</code> exists, in which case, it will be returned as the default for that path.</p>
+</li>
+</ol>
+<h2 id="future-development">Future Development</h2>
+<p>I have made this same website 5 times (it&#39;s gotten better every time). This one seems to be the most promising stability-wise (though none of them were &#39;bad&#39;). I&#39;m thinking about making this framework more general and widely available to the public, possibly via an <code>npx</code> command. Compile time is very fast, taking me only <code>.9</code> seconds for this site.</p>
+
         </div>
     </section>
     <footer class="footer-dark" style="background: transparent;">
