@@ -49,10 +49,6 @@ function makeLabel(json, labelColor, messageColor, style, label) {
 // Endpoints
 module.exports = function(app) {
 
-    // Documentation endpoint
-    app.get('/api/pypi-downloads', function(req, res) {
-        res.sendFile('assets/pypi-downloads.html', {root: __dirname});
-    })
     // Pure JSON endpoint
     app.get('/api/pypi-downloads/:packageName', function(req, res) {
         request(`https://pypistats.org/api/packages/${req.params.packageName}/overall`,

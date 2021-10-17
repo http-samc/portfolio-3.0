@@ -1,0 +1,122 @@
+#dynamic {
+    margin-bottom: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    color: var(--bs-cyan);
+    text-align: center;
+}
+
+h2 {
+    color: salmon;
+}
+
+h3 {
+    color: orange;
+}
+
+h4 {
+    color: var(--bs-green);
+}
+
+h5 {
+    color: var(--bs-red);
+}
+
+h6 {
+    color: var(--bs-purple);
+}
+
+a {
+    text-decoration-style: wavy;
+    font-weight: 600;
+}
+
+img:not(.ovr) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+code {
+    color: #C2A200;
+    letter-spacing: .1ch;
+}
+
+blockquote {
+    font-size: 1.4em;
+    margin: 50px auto;
+    padding: 1.2em 30px 1.2em 75px;
+    border-left: 8px solid var(--bs-blue);
+    line-height: 1.6;
+    position: relative;
+    background: #1e1e1e;
+}
+
+blockquote::before {
+    font-family: Arial;
+    content: "\201C";
+    color: var(--bs-blue);
+    font-size: 4em;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+}
+
+blockquote::after {
+    content: '';
+}
+
+blockquote cite {
+    display: block;
+    color: var(--bs-blue);
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 1em;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto 10px auto;
+    font-size: 0.9em;
+    border-radius: 10px;
+}
+
+table thead tr {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    text-align: left;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    background-color: #1e1e1e;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}

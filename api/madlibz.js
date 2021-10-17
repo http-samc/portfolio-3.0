@@ -2,8 +2,6 @@ const request = require('request');
 const fs = require('fs');
 const ERROR = { message : "Unknown Error!" };
 
-// Opens madlibs.json and returns random madlib
-// CREDIT: https://github.com/HermanFassett/madlibz/blob/master/data/templates.json for the madlibs in JSON form
 function getRandomMadlib() {
     try {
         let rawdata = fs.readFileSync('api/assets/madlibz.json');
@@ -11,6 +9,7 @@ function getRandomMadlib() {
         return madlibz[Math.floor(Math.random()*madlibz.length)];
     }
     catch (e) {
+        console.log(e)
         return ERROR;
     }
 }
@@ -26,7 +25,5 @@ module.exports = function(app) {
         catch (e) {
             res.json(ERROR).status(500);
         }
-        
     });
-
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>smrth.dev</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/style-markdown.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JEJRR9VCC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7JEJRR9VCC');
+    </script>
+</head>
+
+<body style="font-family: Montserrat, sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-md d-md-flex align-items-md-center navigation-clean"
+        style="background: transparent;">
+        <div class="container"><a class="navbar-brand" href="/"
+                style="color: var(--bs-teal);font-size: xx-large;font-weight: 700;font-family: Montserrat, sans-serif;">smrth.dev</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"
+                style="border-style: none;border-color: var(--bs-green);color: var(--bs-teal);"><span
+                    class="visually-hidden">Toggle navigation</span><span
+                    class="navbar-toggler-icon d-flex justify-content-center align-items-center"
+                    style="border-style: solid;background: transparent;"><i
+                        class="fa fa-ellipsis-v d-flex align-items-center" style="margin-top: 2px;"></i></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#contact-🤝" style="color: var(--bs-pink);">contact</a>
+                    </li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#projects-👨💻"
+                            style="color: var(--bs-purple);">projects</a></li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link d-md-flex d-lg-flex align-items-lg-center" href="https://github.com/http-samc" style="color: var(--bs-red);background: transparent;"><span class="d-md-flex align-items-md-center" style="background: #121212;padding: 7px;color: var(--bs-gray-200);border-radius: 5px;">&nbsp;<i class="fab fa-github"></i>&nbsp;http-samc</span></a></li>
+                        </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
+        <div id="dynamic" style="width: 50%;max-width: 750px;min-width: 300px;margin-top: 30px;">
+            ${markdown}$
+        </div>
+    </section>
+    <footer class="footer-dark" style="background: transparent;">
+        <div class="container">
+            <p class="copyright">made with 💙,&nbsp; © samarth chitgopekar 2021</p>
+        </div>
+    </footer>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    var links = document.getElementsByTagName('a');
+    var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)'];
+    var prev = "";
+    var random_color = prev;
+    Array.prototype.forEach.call(links, function(link) {
+        if (link.style.color !== "") return
+        while (random_color === prev)
+            random_color = colors[Math.floor(Math.random() * colors.length)];
+        link.style.color = random_color;
+        prev = random_color;
+    })
+
+    </script>
+</body>
+
+</html>
