@@ -18,6 +18,6 @@ These are some of the technologies I look to when starting a new project. Though
 ${fragments/tech.html}$
 
 ## projects 👨‍💻
-Here are the (public) projects I've been proud to make over the years. There are a variety of applications made here, including: frontend, backend, desktop, mobile, api, chrome extension, and more!
+Here are the (public) projects I've been proud to make over the years. There are a variety of applications made here, including: frontend, backend, desktop, mobile, api, chrome extensions, and more!
 
 ${fragments/projects.html}$
