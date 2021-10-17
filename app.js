@@ -14,8 +14,10 @@ const fs = require('fs')
 var app = express();
 var port = process.env.PORT || 8080;
 app.use(express.static(__dirname));
-//require('./api/pypi-downloads')(app)
-//require('./api/madlibz')(app)
+
+// API middleware config
+require('./api/pypi-downloads')(app)
+require('./api/madlibz')(app)
 
 /*
     Defining routes
