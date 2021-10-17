@@ -53,11 +53,11 @@
             <h1 id="pypi-download-api">PyPI Download API</h1>
 <p align="center">The easiest api (with badge support) for cumulative PyPI downloads!</p>
 
-<p>This API allows you to get the total amount of downloads any <a href="https://pypi.org">PyPI</a> project has gotten throughout its existence. It employs the use of <a href="https://pypistats.org/">PyPI Stats</a> (which provides monthly download breakdowns) and <a href="https://www.npmjs.com/package/badge-maker">Badge Maker</a> (which powers the badge endpoint). I primarily made this API for myself, as I like to know how many people are using packages I publish so I know what I need to work on. The endpoints are listed below:</p>
+<p>This API allows you to get the total amount of downloads any <a href="https://pypi.org">PyPI</a> project has gotten throughout its existence. It employs the use of <a href="https://pypistats.org/">PyPI Stats</a> (which provides monthly download breakdowns) and <a href="https://www.npmjs.com/package/badge-maker">Badge Maker</a> (which powers the badge endpoint). I primarily made this API for myself, as I like to know how many people are using packages I publish so I know what I need to work on. The endpoints (which use <code>https://www.smrth.dev</code> as their base) are listed below:</p>
 <h2 id="json-api">JSON API</h2>
 <ul>
 <li><code>/api/pypi-downloads/:packageName</code>:  Get the number of downloads and number of active days of a PyPI package.</li>
-<li><a href="https://www.smrth.dev/api/pypi-downloads/gendoc">Sample &#39;GET&#39; URL</a></li>
+<li><a href="/api/pypi-downloads/gendoc">Sample &#39;GET&#39; URL</a></li>
 <li>Return Schema:<pre><code class="language-json">{
   &quot;downloads&quot;: &lt;(int) number of downloads&gt;,
   &quot;days&quot;: &lt;(int) number of active days&gt;
@@ -74,11 +74,11 @@
 <h2 id="readme-badge-api">README Badge API</h2>
 <ul>
 <li><code>/api/pypi-downloads/badge/:packageName</code>: Get a README-file ready badge that contains your project&#39;s total PyPI downloads.</li>
-<li><a href="http://localhost:8080/api/pypi-downloads/badge/gendoc">Sample &#39;GET&#39; URL</a></li>
+<li><a href="/api/pypi-downloads/badge/gendoc">Sample &#39;GET&#39; URL</a></li>
 <li>Return Schema: <code>image/svg</code></li>
 <li>Sample Return:</li>
 </ul>
-<p><img src="https://www.smrth.dev/api/pypi-downloads/badge/gendoc" alt="Gendoc Badge"></p>
+<p><img src="/api/pypi-downloads/badge/gendoc" alt="Gendoc Badge"></p>
 <p><em>Disclaimer: This site is ran on limited resources. I make its API&#39;s publicly available, but I am not responsible for any breakage nor do I provide any guarantee of uptime.</em></p>
 
         </div>
