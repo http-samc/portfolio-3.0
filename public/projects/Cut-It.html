@@ -52,6 +52,43 @@
         <div id="dynamic" style="width: 50%;max-width: 750px;min-width: 300px;margin-top: 30px;">
             <h1 id="cut-it">Cut-It</h1>
 <p align="center">The card-cutting tool of the future!</p>
+
+<h2 id="there-has-to-be-a-better-way">There Has To Be A Better Way</h2>
+<p>High school debate is ultra-competitive. Debaters competing nationally can very well spend thousands of dollars flying across the country to participate in <a href="https://ci.uky.edu/UKDebate/gold-pf-bid-tournaments">prestigious tournaments</a> and face fierce competition. Even though there&#39;s certainly a performance aspect, debate is a research activity at its core.</p>
+<p>In all divisions, competitors must understandably &#39;cut&#39; (or format) various sources of evidence to substantiate their &#39;cases&#39; (arguments). Ideally, this means taking the time to format evidence something like this:</p>
+<pre><code class="language-python">&lt;author name&gt; &#39;&lt;year published&gt;
+&lt;publisher/source&gt;
+&lt;author qualification&gt;
+
+normal text normal text normal text EMPHASIZED TEXT
+normal text normal text normal text normal text
+normal text normal text EMPHASIZED TEXT normal text
+normal text ...
+</code></pre>
+<p>Here, &quot;EMPHASIZED TEXT&quot; is the part of the evidence debaters read in speeches. It should be a larger font size than normal text, bolded, underlined and highlighted (depending on preference).</p>
+<p>Unfortunately, debaters oftentimes have too much work and too little time, and the quality of evidence takes the hit. This isn&#39;t just a matter of styling preference - high quality evidence is key to ensuring the fairness of the game.</p>
+<p>That&#39;s why I invented Cut-It, a desktop applicaiton that makes formatting cards a breeze.</p>
+<h2 id="what-does-it-do">What Does It Do?</h2>
+<p>Cut-It speeds up your workflow in 3 key ways:</p>
+<ol>
+<li>AutoCut: Cut-It will generate an MLA &amp; debate-grade citation (using <a href="/projects/QuickCite">QuickCite</a>) and get the full text of your article with <strong>only</strong> a URL.</li>
+<li>Custom Emphasis Levels: Cut-It offers 3 emphasis levels that can be fully customized to your liking (bolding, underlining, font-size, highlight color, etc.) that are accessible via shortcuts and buttons. These macros make formatting your evidence a breeze.</li>
+<li>Card History: The fastest way to cut a card is to not have to cut it in the first place. Debaters often reuse evidence, but recut the card simply because they couldn&#39;t find it. Cutting cards with Cut-It means that each card is locally saved to your device and searchable through Card History.</li>
+</ol>
+<h2 id="how-do-i-get-it">How Do I Get It?</h2>
+<p>Downloads (Windows, MacOS) for Cut-It are hosted (alongside a full features list) on <a href="http://cutit.cards">cutit.cards</a>, with documentation available at <a href="https://docs.cutit.cards">docs.cutit.cards</a>.</p>
+<p>The project is also open sourced on GitHub at <a href="https://github.com/http-samc/cut-it">http-samc/Cut-It</a> and API documentation is available at <a href="https://github.com/http-samc/cut-it/blob/main/DOCS.md">Cut-It/DOCS.md</a>.</p>
+<h2 id="what-i-learned">What I Learned</h2>
+<p>Cut-It uses a proper GUI framework, <a href="https://pypi.org/project/PyQt5/">PyQt5</a>, in order to power its desktop applications. I didn&#39;t have any prior experience with Qt, but <a href="https://www.linkedin.com/in/adithyav-/">Adithya</a> (the R&amp;D lead for Cut-It) reccommended that I use it because of its cross-platform nature (which allows us to deploy to both Windows and MacOS with one codebase).</p>
+<p>Because I knew that I was going to push updates, I designed an autoupdating framework that polled a backend to check for new versions of the app. Seen below, this allows the user to accept or deny the update (only if it is non-critical) while getting a fully-detailed breakdown of the update, including version number, date, bug fixes, new features, etc.</p>
+<p><img src="https://files.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MeP0lkifg4TDLtCdbc_%2F-MePZw8-i_f2kKXHMJyN%2F-MePo8XAC0k_TvXXvJ8j%2Fupdate-opt.png?alt=media&token=0e67ce9a-dac7-4511-85c6-c3b048c68357" alt="Cut It Updates"></p>
+<p>I knew that I wanted Cut-It to work for anyone, so user customizeability was going to be a key factor. I wanted to store all data in a standard .json file, so I used <a href="https://pypi.org/project/userpaths/">userpaths</a> to allow me to get a cross-platform reference to the current user&#39;s documents folder (where I could store the app data). From there, I set up a durable dictionary schema that allows me to store and apply all the user&#39;s settings/preferences. Here&#39;s what it looks like from their perspective:</p>
+<p><img src="https://i.gyazo.com/0cb80d383fd61967bc195b5fd7bb4e28.gif" alt="Setting Preferences"></p>
+<p><img src="https://i.gyazo.com/7578500b474330b3ac9fec7449733115.gif" alt="Recording Shortcuts"></p>
+<p>Even though the platform itself is very powerful, Qt&#39;s default look is very dated. To combat this, I used <a href="https://pypi.org/project/qtmodern/">QtModern</a> to give my app a simple yet beautiful theme that also greatly standardizes the appearance of the app on both Windows and MacOS. On top of that, it also lets me implement both light and dark modes easily.</p>
+<p><img src="https://i.gyazo.com/109ee829cf8983af67d2d4ff5a98a4e7.gif" alt="Toggling Themes"></p>
+<p>As a fun bonus, I included a &#39;SuperBrowser&#39; that uses <a href="https://selenium-python.readthedocs.io/">Selenium</a> to load a soft paywall bypass extension (open source and legal), which helps debaters maximize the number of sources they can turn to for evidence.</p>
+
         </div>
     </section>
     <footer class="footer-dark" style="background: transparent;">

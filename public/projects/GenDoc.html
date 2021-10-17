@@ -52,6 +52,22 @@
         <div id="dynamic" style="width: 50%;max-width: 750px;min-width: 300px;margin-top: 30px;">
             <h1 id="gendoc">GenDoc</h1>
 <p align="center">A popular & versatile Python documentation generator.</p>
+
+<h2 id="why-gendoc">Why GenDoc</h2>
+<p>GenDoc is a simple yet powerfull Python library, designed to be lightweight and produce intuitive documentation with a single command. Simply annotate your Python project with Docstrings and GenDoc will parse through and, using Abstract Syntax Trees, convert your documentation to Markdown - ready to be used in any project documentation.</p>
+<h2 id="installation">Installation</h2>
+<p>GenDoc is available on PyPI as <a href="https://pypi.org/project/GenDoc/">GenDoc</a>, where it has over 20,000 downloads. It can be installed with pip:</p>
+<p><code>$ pip install gendoc</code></p>
+<p>The project is also open sourced on GitHub at <a href="https://github.com/http-samc/gendoc">http-samc/GenDoc</a>.</p>
+<h2 id="use">Use</h2>
+<p>In your terminal, simply run:</p>
+<p><code>$ gendoc &lt;flags&gt;</code></p>
+<p>Flags are optional, and a full list can be found <a href="https://github.com/http-samc/gendoc#you-can-also-use-any-of-the-following-flags-in-your-terminal-to-customize-your-output-optional">here</a>. It&#39;s reccommended that you set up a <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">git hook</a> or something similar to run GenDoc and update your documentation for you automatically.</p>
+<h2 id="what-i-learned">What I Learned</h2>
+<p>This was the first CLI package I made with Python, so it was also my first time using argparse. Though I could&#39;ve gone a different direction with this project, I&#39;m glad I limited my library usage to the out-of-the-box libraries that come with Python. There are already other documentation generators like <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, but I think the fact that Gendoc is so straightforward is what makes it stand out.</p>
+<h2 id="extras">Extras</h2>
+<p>For some real-world examples, check out <a href="/projects/Cut-It">Cut It</a>&#39;s <a href="https://github.com/http-samc/cut-it/blob/main/DOCS.md"> documentation</a> and <a href="/projects/2048.py">2048.py</a>&#39;s <a href="https://github.com/http-samc/2048.py">module documentation</a>, which are both built using GenDoc.</p>
+
         </div>
     </section>
     <footer class="footer-dark" style="background: transparent;">

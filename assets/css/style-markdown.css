@@ -46,6 +46,9 @@ img:not(.ovr) {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
+    width: 300px;
+    height: auto;
 }
 
 code {
