@@ -118,4 +118,4 @@ dist
 .pnp.*
 
 # Force rebuild to avoid version conflicts
-public/
+#public/
