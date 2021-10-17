@@ -1,18 +1,25 @@
 {
   "name": "smrth.dev",
   "version": "1.0.0",
-  "description": "My personal portfolio site!",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/http-samc/smrth.dev.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/http-samc/smrth.dev/issues"
+  },
+  "homepage": "https://github.com/http-samc/smrth.dev#readme",
   "dependencies": {
-    "badge-maker": "^3.3.1",
     "express": "^4.17.1",
-    "request": "^2.88.2"
+    "fs-extra": "^10.0.0",
+    "marked": "^3.0.7"
   }
 }
