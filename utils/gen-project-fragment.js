@@ -9,6 +9,7 @@ function genProjectsView() {
         lines = contents.split('\n');
         projectName = lines[0].replace('# ', '');
         projectURLName = projectName.replaceAll(' ', '-');
+        if (projectURLName === "Tournaments.Tech") projectURLName = "tournaments.tech" // unknown err only on server, needs to be lowercase
         projectDesc = lines[1].replace('<p align="center">', '').replace('</p>', '');
         html += `
 <div class="project" style="background:#1e1e1e;border-radius:10px;padding:7px;width:100%;margin:0px auto 15px;min-width:300px">
