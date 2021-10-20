@@ -90,6 +90,7 @@ function render(root, output, template) {
     templateText = read(template);
     paths = getAllFiles(root, []);
     paths.forEach(function(path) {
+      if (path.includes('.DS_St')) return
         markdown = read(path).replace('\\t', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
         markdown = insertFragments(markdown);
         htmlFragment = marked(markdown);

@@ -2,6 +2,8 @@
 ${fragments/pfp.html}$
 <p align="center">a fullstack developer from 📍 Chicago, IL</p>
 
+${fragments/github-ref.html}$
+
 ## hi 👋
 I'm Sam, a student at [Fremd High School](https://adc.d211.org/Domain/9) ('23). I first started coding at 12 years old to kill free time, but it quickly became more than a hobby for me. Today, in addition to developing, I spend my time:
 - debating [Public Forum](https://www.speechanddebate.org/topics/) on the IL and National Circuit

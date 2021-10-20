@@ -39,12 +39,14 @@
                         class="fa fa-ellipsis-v d-flex align-items-center" style="margin-top: 2px;"></i></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#contact-🤝" style="color: var(--bs-pink);">contact</a>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#contact-🤝"
+                            style="color: var(--bs-pink);">contact</a>
                     </li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#tech-stack-⚙️"
+                            style="color: orange">tech</a></li>
                     <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#projects-👨💻"
                             style="color: var(--bs-purple);">projects</a></li>
-                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link d-md-flex d-lg-flex align-items-lg-center" href="https://github.com/http-samc" style="color: var(--bs-red);background: transparent;"><span class="d-md-flex align-items-md-center" style="background: #121212;padding: 7px;color: var(--bs-gray-200);border-radius: 5px;">&nbsp;<i class="fab fa-github"></i>&nbsp;http-samc</span></a></li>
-                        </ul>
+                </ul>
             </div>
         </div>
     </nav>
@@ -54,6 +56,7 @@
 <p><br><img class="ovr" style="display: block;margin-left: auto;margin-right: auto;" src="/assets/img/pfp.png" width="175" height="auto"><br></p>
 <p align="center">a fullstack developer from 📍 Chicago, IL</p>
 
+<p><a href="https://github.com/http-samc" target="_blank"><img class="ovr" style="display: block;margin-left: auto;margin-right: auto;" src="/assets/img/github-profile.svg" width="150" height="auto"></a><br></p>
 <h2 id="hi-👋">hi 👋</h2>
 <p>I&#39;m Sam, a student at <a href="https://adc.d211.org/Domain/9">Fremd High School</a> (&#39;23). I first started coding at 12 years old to kill free time, but it quickly became more than a hobby for me. Today, in addition to developing, I spend my time:</p>
 <ul>
@@ -217,17 +220,17 @@
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
-    var links = document.getElementsByTagName('a');
-    var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)'];
-    var prev = "";
-    var random_color = prev;
-    Array.prototype.forEach.call(links, function(link) {
-        if (link.style.color !== "") return
-        while (random_color === prev)
-            random_color = colors[Math.floor(Math.random() * colors.length)];
-        link.style.color = random_color;
-        prev = random_color;
-    })
+        var links = document.getElementsByTagName('a');
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)'];
+        var prev = "";
+        var random_color = prev;
+        Array.prototype.forEach.call(links, function (link) {
+            if (link.style.color !== "") return
+            while (random_color === prev)
+                random_color = colors[Math.floor(Math.random() * colors.length)];
+            link.style.color = random_color;
+            prev = random_color;
+        })
 
     </script>
 </body>
