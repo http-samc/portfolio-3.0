@@ -1,5 +1,5 @@
 # Cut-It
-<p align="center">The card-cutting tool of the future!</p>
+<p align="center">The speech and debate card-cutting tool of the future!</p>
 
 ## There Has To Be A Better Way
 High school debate is ultra-competitive. Debaters competing nationally can very well spend thousands of dollars flying across the country to participate in [prestigious tournaments](https://ci.uky.edu/UKDebate/gold-pf-bid-tournaments) and face fierce competition. Even though there's certainly a performance aspect, debate is a research activity at its core.

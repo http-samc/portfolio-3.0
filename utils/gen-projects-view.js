@@ -18,7 +18,7 @@ function genProjectsView() {
 </div>
         `
     });
-    fs.writeFileSync('fragments/projects.html', html);
+    fs.writeFileSync('fragments/projectsView.html', html);
 }
 
 exports.genFragment = genProjectsView;
