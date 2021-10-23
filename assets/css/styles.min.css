@@ -148,3 +148,10 @@
 .nav-link:hover {
     color: var(--bs-teal)
 }
+
+#projects {
+    display: grid;
+    grid-gap: 25px;
+    padding: 10px;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  }

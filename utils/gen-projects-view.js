@@ -16,7 +16,7 @@ function genProjectsView() {
     <h4 style="margin-left:10px;margin-top:10px;"><a href="/projects/${projectURLName}">${projectName}</a></h4>
     <p style="margin-left:10px">${projectDesc}</p>
 </div>
-        `
+`
     });
     fs.writeFileSync('fragments/projectsView.html', html);
 }
