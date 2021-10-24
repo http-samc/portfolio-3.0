@@ -1,4 +1,4 @@
-# Tournaments.Tech
+# tournaments.tech
 <p align="center">The most popular (and accurate) debate ranking site!</p>
 
 ## It Started With A Problem
