@@ -90,8 +90,8 @@
 <p>I also had to learn how to translate statistics into code. More specifically, my partner <a href="linkedin.com/in/adithyav-/">Adithya</a> created the factor we use to rank debaters: the <a href="https://github.com/http-samc/tabroom-API/blob/main/RANKING_METHODOLOGY.md">OTR Score</a>. This relatively complex formula needed to be translated into code, and keeping track of all the various parameters throughout the scraping and parsing proved to be a challenging feat. Ultimately though, a strictly structured dictionary helped keep everything together and enabled us to pull off thousands of OTR Score calculations without a hitch.</p>
 <p>But perhaps the most important lesson I learned is that, in situaitons like these, redundancy is key. In theory, we could get away with only 2 requests per tournament: 1 for the prelims page and 1 for the finals page. However, that&#39;s what all the other APIs, like <a href="https://www.thedebatewatch.com/">TheDebateWatch</a>&#39;s, do. This just causes the inconsistencies from Tabroom to directly translate into their sites, defeating the purpose all together. Instead, we make ~200 requests per tournament, checking the prelims and finals pages <strong>against</strong> each team&#39;s individual results page in order to generate the correct results.</p>
 <h2 id="other-awesome-projects">Other Awesome Projects</h2>
-<div id="posts" class="carousel slide" data-bs-ride="carousel">
-<div id="posts" class="carousel-inner">
+<div id="projects" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
 
 <div class="carousel-item active" style="width:100%">
 <div class="slide-item">
@@ -164,11 +164,11 @@
 </div>
 
 </div>
-<button class="carousel-control-prev" type="button" data-bs-target="#posts" data-bs-slide="prev">
+<button class="carousel-control-prev" type="button" data-bs-target="#projects" data-bs-slide="prev">
 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 <span class="visually-hidden">Previous</span>
 </button>
-<button class="carousel-control-next" type="button" data-bs-target="#posts" data-bs-slide="next">
+<button class="carousel-control-next" type="button" data-bs-target="#projects" data-bs-slide="next">
 <span class="carousel-control-next-icon" aria-hidden="true"></span>
 <span class="visually-hidden">Next</span>
 </button>

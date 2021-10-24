@@ -2,8 +2,8 @@ const fs = require('fs');
 
 function genSlides(subdir) {
     var html = `
-<div id="posts" class="carousel slide" data-bs-ride="carousel">
-<div id="posts" class="carousel-inner">
+<div id="${subdir}" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
 `;
     projectPaths = fs.readdirSync(`content/${subdir}`);
     firstIter = true;
@@ -29,11 +29,11 @@ function genSlides(subdir) {
     });
     html += `
 </div>
-<button class="carousel-control-prev" type="button" data-bs-target="#posts" data-bs-slide="prev">
+<button class="carousel-control-prev" type="button" data-bs-target="#${subdir}" data-bs-slide="prev">
 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 <span class="visually-hidden">Previous</span>
 </button>
-<button class="carousel-control-next" type="button" data-bs-target="#posts" data-bs-slide="next">
+<button class="carousel-control-next" type="button" data-bs-target="#${subdir}" data-bs-slide="next">
 <span class="carousel-control-next-icon" aria-hidden="true"></span>
 <span class="visually-hidden">Next</span>
 </button>
