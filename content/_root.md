@@ -21,7 +21,7 @@ These are some of the technologies I look to when starting a new project. Though
 ${fragments/tech.html}$
 
 ## blog 📝
-I like to post about cool things I've done or learned while coding. A lot of these are also posted on my [dev.to](https://dev.to/httpsamc). You can view them as a list [here](/blog).
+I like to post about cool things I've learned or done. A lot of these are also posted on my [dev.to](https://dev.to/httpsamc). You can view them as a list [here](/blog).
 
 ${fragments/blogSlides.html}$
 
