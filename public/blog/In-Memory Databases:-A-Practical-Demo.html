@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>smrth.dev</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/style-markdown.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JEJRR9VCC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7JEJRR9VCC');
+    </script>
+</head>
+
+<body style="font-family: Montserrat, sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-md d-md-flex align-items-md-center navigation-clean"
+        style="background: transparent;">
+        <div class="container"><a class="navbar-brand" href="/"
+                style="color: var(--bs-teal);font-size: xx-large;font-weight: 700;font-family: Montserrat, sans-serif;">smrth.dev</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"
+                style="border-style: none;border-color: var(--bs-green);color: var(--bs-teal);"><span
+                    class="visually-hidden">Toggle navigation</span><span
+                    class="navbar-toggler-icon d-flex justify-content-center align-items-center"
+                    style="border-style: solid;background: transparent;"><i
+                        class="fa fa-ellipsis-v d-flex align-items-center" style="margin-top: 2px;"></i></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#contact-🤝"
+                            style="color: var(--bs-pink);">contact</a>
+                    </li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/blog"
+                            style="color: orange">blog</a></li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/projects"
+                            style="color: var(--bs-purple);">projects</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
+        <div id="dynamic" style="width: 50%;max-width: 900px;min-width: 300px;margin-top: 30px;">
+            <h1 id="in-memory-databases-a-practical-demo">In-Memory Databases: A Practical Demo</h1>
+<p align="center">redis, databases, python, programming</p>
+
+<p><em>Note: this post was originally published on my dev.to <a href="https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp">here</a> on 8/8/21</em></p>
+<p>Many of you might&#39;ve heard a thing or two about <a href="https://redis.io/">Redis</a>, an in-memory database that enables super fast reads and writes. But why is this?</p>
+<p>We first need to understand what &quot;in-memory&quot; really means. A computer has RAM (Random Access Memory) that&#39;s super fast. This is where Redis lives, in the same place any variable or object you create in any language.</p>
+<p>RAM is very fast, but it comes at a monetary cost - disk space (think your hard drive or ssd) is slower but cheaper. This is easily Redis&#39; biggest pitfall, as RAM becomes a limiting factor regarding how much data you can store.</p>
+<p>With that brief introduction out of the way, let&#39;s dive into a crude demonstration of just how much faster Redis can be in comparison to storage in a generic database. We&#39;ll just be using a simple Json file for this example, but the concept applies to virtually any database.</p>
+<p>I&#39;ll be writing this in Python 3.10, but any modern version of Python 3 will work. No external dependencies are required.</p>
+<details>
+<summary>Here's the step by step walkthrough</summary>
+
+<p>To start, I&#39;m going to import a few modules: <code>json</code> (allows us to port between json &lt;-&gt; python dict) and <code>time</code> (allows us to keep track of time). Then, I&#39;ll create a dictionary called <code>DATA</code>, which will be cached in memory since it&#39;s a variable.</p>
+<pre><code class="language-Python">import json
+import time
+
+DATA: dict = {
+    &quot;key&quot;: &quot;val&quot;
+}
+</code></pre>
+<p>Next, I&#39;ll define a quick method to create a Json file that represents the <code>DATA</code> variable in the current directory - this is what we&#39;ll compare our in-memory calls to:</p>
+<pre><code class="language-Python">def createJsonFile() -&gt; None:
+    &quot;Creates a simple data.json in the current directory with the value of the dict DATA&quot;
+
+    with open(&#39;data.json&#39;, &#39;w&#39;) as f:
+        json.dump(DATA, f)
+</code></pre>
+<p>Now I&#39;ll define a method that opens the Json file, converts it into a dict, and calls for the value of <code>key</code>:</p>
+<pre><code class="language-Python">def readFromJson() -&gt; float:
+    &quot;&quot;&quot;Reads the value of &quot;key&quot; by opening data.json and parsing it into a dict,
+    and then querying the in-memory dict.
+
+    Returns:
+        float: How long the operation took to complete in seconds (rounded to 6 dec.)
+    &quot;&quot;&quot;
+
+    start = time.time()
+
+    with open(&#39;data.json&#39;, &#39;r&#39;) as f:
+        readData = json.loads(f.read())
+    value = readData[&quot;key&quot;]
+
+    timeToComplete = round(time.time()-start, 6)
+
+    print(f&quot;Finished querying Json in: {timeToComplete} sec. (value: {value})&quot;)
+    return timeToComplete
+</code></pre>
+<p>Here, I&#39;m defining a method to get the value of <code>key</code>, but from the already cached in-memory dict <code>DATA</code>:</p>
+<pre><code class="language-Python">def readFromMemory() -&gt; float:
+    &quot;&quot;&quot;Reads the value of &quot;key&quot; from the in-memory dict DATA (global)&quot;
+
+    Returns:
+        float: How long the operation took to complete in seconds (rounded to 6 dec.)
+    &quot;&quot;&quot;
+    start = time.time()
+
+    value = DATA[&quot;key&quot;]
+
+    timeToComplete = round(time.time()-start, 6)
+
+    print(f&quot;Finished querying memory in: {timeToComplete} sec. (value: {value})&quot;)
+    return timeToComplete
+</code></pre>
+<p>Finally, I&#39;ll define a quick tester method to compare the in-memory calls vs the file calls:</p>
+<pre><code class="language-Python"> def main() -&gt; float:
+    &quot;&quot;&quot;Runs a call to readFromMemory and readFromJson and explains which was faster
+    and by how much.
+
+    Returns:
+        float: the time difference between the readFromMemory and readFromJson calls (rounded to 6 dec.)
+                (if pos. -&gt; readFromMemory was faster, if neg. -&gt; readFromJson was faster)
+    &quot;&quot;&quot;
+    readFromJsonTime = readFromJson()
+    readFromMemoryTime = readFromMemory()
+
+    totalDelta = round(readFromJsonTime-readFromMemoryTime, 6)
+
+    if totalDelta &gt;= 0:
+        print(f&quot;Reading from memory was {totalDelta} sec. faster than reading from Json!&quot;)
+    else:
+        print(f&quot;Wow! Reading from Json was actually {-totalDelta} sec. faster!&quot;)
+
+    return totalDelta
+</code></pre>
+<p>As a bonus, I&#39;m going to define a batch method to run lots of tests for us an aggregate the total results:</p>
+<pre><code class="language-Python">def runTests(numTests: int = 10000) -&gt; None:
+    &quot;&quot;&quot;Runs lots of comparisons and explains the net delta,
+    or how much time was saved by the in-memory calls.
+
+    Args:
+        numTests (int, optional): How many tests to run. Defaults to 10,000.
+    &quot;&quot;&quot;
+    start = time.time()
+    deltaCount = 0
+
+    for _ in range(1, numTests):
+        deltaCount += main()
+
+    timeToComplete = round(time.time()-start, 6)
+    print(f&quot;Finished with a net delta of {round(deltaCount, 6)} seconds saved! (Runtime: {timeToComplete} sec.)&quot;)
+</code></pre>
+<p>Last but not least, the actual call:</p>
+<pre><code class="language-Python">if __name__ == &quot;__main__&quot;:
+    createJsonFile()
+
+    # Try this out first to see a single test
+    main()
+
+    # Run this later to see a large comparsion - supply a custom value for numTests if you want!
+    #runTests()
+</code></pre>
+</details>
+
+<details>
+<summary>Here's the complete Python code (copy-pasteable)</summary>
+
+<pre><code class="language-Python">import json
+import time
+
+DATA: dict = {
+    &quot;key&quot;: &quot;val&quot;
+}
+
+def createJsonFile() -&gt; None:
+    &quot;Creates a simple data.json in the current directory with the value of the dict DATA&quot;
+
+    with open(&#39;data.json&#39;, &#39;w&#39;) as f:
+        json.dump(DATA, f)
+
+def readFromJson() -&gt; float:
+    &quot;&quot;&quot;Reads the value of &quot;key&quot; by opening data.json and parsing it into a dict,
+    and then querying the in-memory dict.
+
+    Returns:
+        float: How long the operation took to complete in seconds (rounded to 6 dec.)
+    &quot;&quot;&quot;
+
+    start = time.time()
+
+    with open(&#39;data.json&#39;, &#39;r&#39;) as f:
+        readData = json.loads(f.read())
+    value = readData[&quot;key&quot;]
+
+    timeToComplete = round(time.time()-start, 6)
+
+    print(f&quot;Finished querying Json in: {timeToComplete} sec. (value: {value})&quot;)
+    return timeToComplete
+
+def readFromMemory() -&gt; float:
+    &quot;&quot;&quot;Reads the value of &quot;key&quot; from the in-memory dict DATA (global)&quot;
+
+    Returns:
+        float: How long the operation took to complete in seconds (rounded to 6 dec.)
+    &quot;&quot;&quot;
+    start = time.time()
+
+    value = DATA[&quot;key&quot;]
+
+    timeToComplete = round(time.time()-start, 6)
+
+    print(f&quot;Finished querying memory in: {timeToComplete} sec. (value: {value})&quot;)
+    return timeToComplete
+
+def main() -&gt; float:
+    &quot;&quot;&quot;Runs a call to readFromMemory and readFromJson and explains which was faster
+    and by how much.
+
+    Returns:
+        float: the time difference between the readFromMemory and readFromJson calls (rounded to 6 dec.)
+                (if pos. -&gt; readFromMemory was faster, if neg. -&gt; readFromJson was faster)
+    &quot;&quot;&quot;
+    readFromJsonTime = readFromJson()
+    readFromMemoryTime = readFromMemory()
+
+    totalDelta = round(readFromJsonTime-readFromMemoryTime, 6)
+
+    if totalDelta &gt;= 0:
+        print(f&quot;Reading from memory was {totalDelta} sec. faster than reading from Json!&quot;)
+    else:
+        print(f&quot;Wow! Reading from Json was actually {-totalDelta} sec. faster!&quot;)
+
+    return totalDelta
+
+def runTests(numTests: int = 10000) -&gt; None:
+    &quot;&quot;&quot;Runs lots of comparisons and explains the net delta,
+    or how much time was saved by the in-memory calls.
+
+    Args:
+        numTests (int, optional): How many tests to run. Defaults to 10,000.
+    &quot;&quot;&quot;
+    start = time.time()
+    deltaCount = 0
+
+    for _ in range(1, numTests):
+        deltaCount += main()
+
+    timeToComplete = round(time.time()-start, 6)
+    print(f&quot;Finished with a net delta of {round(deltaCount, 6)} seconds saved! (Runtime: {timeToComplete} sec.)&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    createJsonFile()
+
+    # Try this out first to see a single test
+    main()
+
+    # Run this later to see a large comparsion - supply a custom value for numTests if you want!
+    #runTests()
+</code></pre>
+</details>
+
+<h2 id="the-demo">The Demo</h2>
+<p>To start, just run the program. You&#39;ll see a single test that might print out something like this:</p>
+<pre><code>Finished querying Json in: 0.001 sec. (value: val)
+Finished querying memory in: 0.0 sec. (value: val)
+Reading from memory was 0.001 sec. faster than reading from Json!
+</code></pre>
+<p>As you can see, there&#39;s a difference. That might not seem like a lot, but try commenting out <code>main()</code> and uncommenting <code>runTests()</code>. Here&#39;s what it looked like when I passed in <code>numTests=100000</code> to the <code>runTests</code> call:</p>
+<pre><code>&lt;-- Hundreds of thousands of lines of individual test results --&gt;
+Finished with a net delta of 17.438135 seconds saved! (Runtime: 73.684126 sec.)
+</code></pre>
+<p>As you can see, those small differences add up. Now for most applications, I doubt you&#39;ll need something as powerful as Redis. But, there&#39;s a reason big tech companies that rely on speedy APIs like <a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2019/improving-key-expiration-in-redis">Twitter</a> use it.</p>
+<h2 id="other-awesome-posts">Other Awesome Posts</h2>
+<div id="posts" class="carousel slide" data-bs-ride="carousel">
+<div id="posts" class="carousel-inner">
+
+<div class="carousel-item active" style="width:100%">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/Deploying-An-App:-5-Things-I-Learned">Deploying An App: 5 Things I Learned</a></h4>
+<p class="slide-desc">python, devjournal, devops</p>
+</div>
+</div>
+
+<div class="carousel-item" style="width:100%">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/In-Memory-Databases:-A-Practical-Demo">In-Memory Databases: A Practical Demo</a></h4>
+<p class="slide-desc">redis, databases, python, programming</p>
+</div>
+</div>
+
+<div class="carousel-item" style="width:100%">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/My-Second-Post">My Second Post</a></h4>
+<p class="slide-desc">Wow, very cool!</p>
+</div>
+</div>
+
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#posts" data-bs-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#posts" data-bs-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+        </div>
+    </section>
+    <footer class="footer-dark" style="background: transparent;">
+        <div class="container">
+            <p class="copyright">made with 💙,&nbsp; © samarth chitgopekar 2021</p>
+        </div>
+    </footer>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        var links = document.getElementsByTagName('a');
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)'];
+        var prev = "";
+        var random_color = prev;
+        Array.prototype.forEach.call(links, function (link) {
+            if (link.style.color !== "") return
+            while (random_color === prev)
+                random_color = colors[Math.floor(Math.random() * colors.length)];
+            link.style.color = random_color;
+            prev = random_color;
+        })
+
+    </script>
+</body>
+
+</html>

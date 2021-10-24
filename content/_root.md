@@ -20,6 +20,11 @@ ${fragments/socials.html}$
 These are some of the technologies I look to when starting a new project. Though there's some overlap, I've always beleived that using the right tool for the right job is the most important aspect of software development.
 ${fragments/tech.html}$
 
+## blog 📝
+I like to post about cool things I've done or learned while coding. A lot of these are also posted on my [dev.to](https://dev.to/httpsamc). You can view them as a list [here](/blog).
+
+${fragments/blogSlides.html}$
+
 ## projects 👨‍💻
 Here are the (public) projects I've been proud to make over the years. There are a variety of applications made here, including: frontend, backend, desktop, mobile, api, chrome extensions, and more! You can view them as a list [here](/projects).
 

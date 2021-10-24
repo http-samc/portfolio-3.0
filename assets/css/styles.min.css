@@ -7,7 +7,10 @@
 
 .footer-dark p:hover {
     opacity: 1;
+    transform: scale(1.1);
+    transition: all ease 500ms;
 }
+
 .footer-dark .item.text {
     margin-bottom: 36px
 }
@@ -149,9 +152,55 @@
     color: var(--bs-teal)
 }
 
-#projects {
+.grid-parent {
     display: grid;
     grid-gap: 25px;
     padding: 10px;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
-  }
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.item {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 7px;
+    width: 100%;
+    margin: 0px auto 15px;
+}
+
+.item:hover {
+    transform: scale(1.1);
+    transition: all ease 500ms;
+}
+
+.item-header {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.item-desc {
+    margin-left: 10px;
+}
+
+.slide-item {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 7px;
+    width: 70%;
+    height: 10vh;
+    margin: auto;
+}
+
+.slide-header {
+    margin-left: 10px;
+    margin-top: 10px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.slide-desc {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

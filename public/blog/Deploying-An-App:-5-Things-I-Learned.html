@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>smrth.dev</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/style-markdown.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JEJRR9VCC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7JEJRR9VCC');
+    </script>
+</head>
+
+<body style="font-family: Montserrat, sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-md d-md-flex align-items-md-center navigation-clean"
+        style="background: transparent;">
+        <div class="container"><a class="navbar-brand" href="/"
+                style="color: var(--bs-teal);font-size: xx-large;font-weight: 700;font-family: Montserrat, sans-serif;">smrth.dev</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"
+                style="border-style: none;border-color: var(--bs-green);color: var(--bs-teal);"><span
+                    class="visually-hidden">Toggle navigation</span><span
+                    class="navbar-toggler-icon d-flex justify-content-center align-items-center"
+                    style="border-style: solid;background: transparent;"><i
+                        class="fa fa-ellipsis-v d-flex align-items-center" style="margin-top: 2px;"></i></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#contact-🤝"
+                            style="color: var(--bs-pink);">contact</a>
+                    </li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/blog"
+                            style="color: orange">blog</a></li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/projects"
+                            style="color: var(--bs-purple);">projects</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
+        <div id="dynamic" style="width: 50%;max-width: 900px;min-width: 300px;margin-top: 30px;">
+            <h1 id="deploying-an-app-5-things-i-learned">Deploying An App: 5 Things I Learned</h1>
+<p align="center">python, devjournal, devops</p>
+
+<p><em>Note: this post was originally published on my dev.to <a href="https://dev.to/httpsamc/test-post-1921">here</a> on 7/25/21</em></p>
+<details>
+<summary>Read this if you want details about the actual app - this will not impact your understanding of my tips!</summary>
+<br>
+
+<p>6 months ago, I set out to develop the perfect evidence procurement tool for High School Debate. That &#39;perfect tool&#39; happened to be Cuttr:
+<a href="https://gyazo.com/585c01b237054e6aa99e89c9093727e7"><img src="https://i.gyazo.com/585c01b237054e6aa99e89c9093727e7.png" alt="Cuttr"></a>
+Pretty quickly, some friends gave me their two cents and the program evolved into Cut-It. This was the first application I wanted to deploy to thousands of regular people. Here&#39;s what our latest beta version looked like:
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3rjej1yf0abx223li0yt.png" alt="Cut-It Beta">
+Finally, this summer, after months of work, I launched Cut-It 1.0, our first release version. If you thought the jump from Cuttr to Cut-It beta was cool, check this out:
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/68s3faqyz4imlfguhb3e.png" alt="Alt Text"></p>
+<p>I&#39;m aware many of you have no idea what makes this project useful because High School Debate tech isn&#39;t exactly commonplace in dev circles. Luckily that&#39;s not the point of this post. When deploying Cut-It, I had to go through several hurdles and frankly, if I were rebuilding this project from scratch, I would do it completely differently. My advice should apply to anyone, so that&#39;s the point of this writeup.</p>
+</details>
+<br>
+
+<p><strong>Obligatory Promotion: Cut-It is <a href="https://github.com/http-samc/cut-it">open-sourced</a> and we&#39;re looking for contributors! You can get it at <a href="http://cutit.cards">cutit.cards</a>.</strong></p>
+<p>Before we start, let me briefly explain the tech stack for Cut-It:</p>
+<ul>
+<li>The project is written in Python</li>
+<li>Qt (PyQt5) is used as a GUI framework (Cuttr used tkinter, though I quickly realized this was far too underpowered)</li>
+<li>Binaries are built with PyInstaller</li>
+</ul>
+<p>Now, here&#39;s my advice:</p>
+<h2 id="1-dont-use-python">1. Don&#39;t use Python.</h2>
+<p>Although I like it&#39;s easy syntax, I found PyInstaller to be shaky at best. After working with Go (a compiled language), I got jealous of how easy it was to build and ship packages since it builds to a single binary. For reference, when I tried using the <code>--onefile</code> option with PyInstaller, it took me almost 20 seconds to run the program.</p>
+<p>This comparsion might not be the fairest (Go is compiled, Python is interpreted), but the difference still stands. Even with other interpreted languages like Javascript, build processes still felt a lot cleaner. That could just be me, but regardless, I&#39;d still go with Go over Python - especially now that it seems to have well-developed (albeit unofficial) <a href="https://github.com/therecipe/qt">Qt bindings</a>.</p>
+<h2 id="2-have-multiple-devices-ready">2. Have multiple devices ready.</h2>
+<p>If you want to create a cross-platform desktop app, you&#39;re going to want to deploy on Windows and MacOS at a minimum, and probably Linux too. Windows and Linux are easy to do, but MacOS is a pain if you don&#39;t have a Mac. I tried using <a href="http://scaleway.com/">Scaleway</a>, a Mac rental service, to rent a Mac to run PyInstaller on. It was a nightmare. The lag was unbearable and I had to end up building it on a friend&#39;s Macbook Air.</p>
+<p>If you want to shell out $25/day (1 day minimum due to Apple&#39;s license) you can rent an instance from <a href="https://aws.amazon.com/ec2/instance-types/mac/">AWS</a>. I&#39;d imagine the lag would be minimal, since the servers would be in the US whereas Scaleway&#39;s are all in Paris. This project is open sourced and has no sponsorships, so I really didn&#39;t want to spend hundreds of dollars a year just to build it for MacOS, which is why I just decided to buy a Mac. This way, I can run Windows 10 with <a href="https://support.apple.com/boot-camp">Bootcamp</a>, Linux, and OSX on the same device.</p>
+<h2 id="3-keep-some-cash-on-you">3. Keep some cash on you.</h2>
+<p>Even if you&#39;re keeping your project free, you&#39;re still going to have to pay $99/yr. for Apple&#39;s <a href="https://developer.apple.com/enroll/">Developer Program</a> to get a Mac certificate (albeit Apple&#39;s price also gets you access to deploy to the iOS and Mac App Stores, among other things) and about $100 to get a 1 yr. Windows certificate from a <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/dashboard/get-a-code-signing-certificate">provider</a>. I consider these to be investments in yourself as a developer rather than a particular project, so I register them under my name. This way, I don&#39;t have to buy new certificates anytime I want to distribute something (though if you&#39;re building a major application you might want to consider doing so).</p>
+<p>Keep in mind, this is a nice-to-have feature if you&#39;re building for developers - most of us will know the pains of getting certificates and it won&#39;t significantly harm your downloads to users conversion factor. However, if you&#39;re considering deploying to the &#39;general population&#39;, it becomes a requirement if you want people to actually use your program - those warning messages can be concerning. MacOS doesn&#39;t even immediately present you with the option to open an unsigned file, which is why I&#39;d reccommend getting an OSX certificate through the Apple Developer Program over a Windows one if you have to pick.</p>
+<h2 id="4-think-ahead">4. Think ahead.</h2>
+<p>If you&#39;re going to be pushing any form of an update to your code, you need either an autoupdater or a built-in update notifier. Now the first option is still more difficult than it has to be - I haven&#39;t found a good cross platform autoupdater. I chose to implement a built-in update notifier instead. Here&#39;s a generic rundown of what I did:</p>
+<pre><code class="language-python">On start:
+1. Poll the GitHub releases page (using the GitHub API) for the latest release
+ - If the latest release version == the current software version, ignore the rest of these steps and load directly to the program
+2. In the release description, check for a throwaway tag marked &#39;&lt;req&gt;&#39; signaling that the update is required
+ - If the update is required, don&#39;t offer a &#39;Continue without Updating&#39; option
+3. Find out what platform the code is running on
+4. In the &#39;assets&#39; section of the release on GitHub, find the target installer (Windows: dist-win.msi, MacOS: dist-mac.pkg).
+5. Set the &#39;Update Now&#39; button to open the &#39;browser_download_url&#39; of the appropriate installer
+</code></pre>
+<p>Just like that, you can use GitHub&#39;s Releases API to maintain control over your codebase. The format for accessing your releases through the api is: <code>https://api.github.com/repos/{USERNAME}/{REPO_NAME}/releases</code>.</p>
+<p>Here&#39;s what <a href="https://api.github.com/repos/http-samc/cut-it/releases">https://api.github.com/repos/http-samc/cut-it/releases</a> looks like (various nonpretinent information omitted for brevity):</p>
+<pre><code class="language-json">[
+  {
+    &quot;url&quot;: &quot;https://api.github.com/repos/http-samc/cut-it/releases/44302713&quot;,
+    &quot;node_id&quot;: &quot;MDc6UmVsZWFzZTQ0MzAyNzEz&quot;,
+    &quot;tag_name&quot;: &quot;v.1.0@Release&quot;,
+    &quot;target_commitish&quot;: &quot;main&quot;,
+    &quot;name&quot;: &quot;Cut-It Release Version 1.0&quot;,
+    &quot;created_at&quot;: &quot;2021-06-08T19:23:24Z&quot;,
+    &quot;published_at&quot;: &quot;2021-06-08T19:35:56Z&quot;,
+    &quot;assets&quot;: [
+      {
+        &quot;url&quot;: &quot;https://api.github.com/repos/http-samc/cut-it/releases/assets/40352177&quot;,
+        &quot;id&quot;: 40352177,
+        &quot;name&quot;: &quot;dist-mac.pkg&quot;,
+        &quot;content_type&quot;: &quot;application/octet-stream&quot;,
+        &quot;download_count&quot;: 35,
+        &quot;created_at&quot;: &quot;2021-07-15T11:32:26Z&quot;,
+        &quot;updated_at&quot;: &quot;2021-07-15T11:34:02Z&quot;,
+        &quot;browser_download_url&quot;: &quot;https://github.com/http-samc/cut-it/releases/download/v.1.0%40Release/dist-mac.pkg&quot;
+      },
+      {
+        &quot;url&quot;: &quot;https://api.github.com/repos/http-samc/cut-it/releases/assets/40350931&quot;,
+        &quot;id&quot;: 40350931,
+        &quot;name&quot;: &quot;dist-win.msi&quot;,
+        &quot;download_count&quot;: 40,
+        &quot;created_at&quot;: &quot;2021-07-15T11:17:55Z&quot;,
+        &quot;updated_at&quot;: &quot;2021-07-15T11:19:59Z&quot;,
+        &quot;browser_download_url&quot;: &quot;https://github.com/http-samc/cut-it/releases/download/v.1.0%40Release/dist-win.msi&quot;
+      }
+    ],
+    &quot;tarball_url&quot;: &quot;https://api.github.com/repos/http-samc/cut-it/tarball/v.1.0@Release&quot;,
+    &quot;zipball_url&quot;: &quot;https://api.github.com/repos/http-samc/cut-it/zipball/v.1.0@Release&quot;,
+    &quot;body&quot;: &quot;&lt;req&gt; ... {omitted for brevity}&quot;,
+  },
+...
+]
+</code></pre>
+<h2 id="5-know-how-to-build-installers">5. Know how to build installers.</h2>
+<p>This one&#39;s simple. No one wants to go through the pain of downloading, unzipping, deleting and replacing your program files/assets every time they update or install. Once again, there&#39;s obviously no crossplatform solution to this, but unfortunately, it&#39;s something you need to do reagardless. I&#39;ll keep it quick with what I used (both are free):</p>
+<ul>
+<li>Windows: <a href="https://www.advancedinstaller.com/?utm_source=adwords&amp;utm_medium=paid&amp;utm_campaign=advancedinstaller&amp;gclid=Cj0KCQjwl_SHBhCQARIsAFIFRVVsdjATYT_z4_JyATlznPCVGK8FiAmcnhu0XfWvjvLnchEXFsedpZgaAtTTEALw_wcB">Advanced Installer</a></li>
+<li>MacOS: <a href="https://www.manpagez.com/man/1/pkgbuild/">pkgbuild</a> (this is built in and shockingly easy to use)</li>
+</ul>
+<h2 id="bonus-tip">Bonus Tip!!!</h2>
+<p><strong>Don&#39;t build a desktop application.</strong> At least don&#39;t make it your go-to. After finishing up all of Cut-It&#39;s targeted functionality, I quickly realized the entire project could&#39;ve been implemented quicker in vanilla JavaScript. Looking back, I remember reading the Qt docs thinking &quot;What&#39;s the Qt method for <code>window.getSelection()</code>?&quot;.</p>
+<p>I think the best way to build any GUI app is just with the HTML/CSS/JS stack. If you need a &quot;real&quot; desktop app (accesses filesystem, etc.), you can use a JS framework, with the most popular being <a href="https://www.electronjs.org/">Electron</a>. I&#39;m reimplementing Cut-It as a vanilla JS site that&#39;s a progressive web app. These are being championed by lots of big companies, and you can read about how Google is doing so in Chrome (v.70+) <a href="https://www.simicart.com/blog/desktop-pwa/">here</a>.</p>
+<p>This also solves the compilation and installer development issue. Because it&#39;s a web app, you never need an autoupdater. If you&#39;re using something like AWS Elsastic Beanstalk with their <a href="https://aws.amazon.com/getting-started/hands-on/continuous-deployment-pipeline/">Code Pipeline</a> to host your site, you can just push to main and instantly update your user&#39;s apps. Moreover, you don&#39;t need to worry about paying for certificates.</p>
+<h2 id="other-awesome-posts">Other Awesome Posts</h2>
+<div id="posts" class="carousel slide" data-bs-ride="carousel">
+<div id="posts" class="carousel-inner">
+
+<div class="carousel-item active" style="width:100%">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/Deploying-An-App:-5-Things-I-Learned">Deploying An App: 5 Things I Learned</a></h4>
+<p class="slide-desc">python, devjournal, devops</p>
+</div>
+</div>
+
+<div class="carousel-item" style="width:100%">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/In-Memory-Databases:-A-Practical-Demo">In-Memory Databases: A Practical Demo</a></h4>
+<p class="slide-desc">redis, databases, python, programming</p>
+</div>
+</div>
+
+<div class="carousel-item" style="width:100%">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/My-Second-Post">My Second Post</a></h4>
+<p class="slide-desc">Wow, very cool!</p>
+</div>
+</div>
+
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#posts" data-bs-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#posts" data-bs-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+        </div>
+    </section>
+    <footer class="footer-dark" style="background: transparent;">
+        <div class="container">
+            <p class="copyright">made with 💙,&nbsp; © samarth chitgopekar 2021</p>
+        </div>
+    </footer>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        var links = document.getElementsByTagName('a');
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)'];
+        var prev = "";
+        var random_color = prev;
+        Array.prototype.forEach.call(links, function (link) {
+            if (link.style.color !== "") return
+            while (random_color === prev)
+                random_color = colors[Math.floor(Math.random() * colors.length)];
+            link.style.color = random_color;
+            prev = random_color;
+        })
+
+    </script>
+</body>
+
+</html>

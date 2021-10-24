@@ -85,14 +85,14 @@ function insertFragments(md) {
     return md
 }
 
-function render(root, output, template) {
+function render(root, output, template, preprocessor) {
     fsExtra.emptyDirSync(output);
     templateText = read(template);
     paths = getAllFiles(root, []);
     paths.forEach(function(path) {
       if (path.includes('.DS_St')) return
       markdown = read(path).replace('\\t', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-      if (path.includes('projects/') && !path.includes('_root.md')) markdown += '\n## Other Awesome Projects\n${fragments/projectsSlides.html}$'
+      markdown = preprocessor(path, markdown);
       markdown = insertFragments(markdown);
       htmlFragment = marked(markdown);
       publicPath = path.replace(root, output).slice(0, -3) + '.html';
