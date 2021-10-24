@@ -138,6 +138,8 @@ if __name__ == "__main__":
 
 </details>
 
+<br>
+
 <details>
 <summary>Here's the complete Python code (copy-pasteable)</summary>
 
