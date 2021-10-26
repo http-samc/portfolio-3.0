@@ -24,6 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-7JEJRR9VCC');
     </script>
+    <audio id="heartbeat" src="https://css-tricks.com/examples/SoundOnHover/audio/beep.mp3" preload="auto"></audio>
 </head>
 
 <body style="font-family: Montserrat, sans-serif;">
@@ -148,7 +149,7 @@ if __name__ == &quot;__main__&quot;:
     </section>
     <footer class="footer-dark" style="background: transparent;">
         <div class="container">
-            <p class="copyright">made with 💙,&nbsp; © samarth chitgopekar 2021</p>
+            <p class="copyright">created with 💙 & ☕ by <a href="/">@smrth</a></p>
         </div>
     </footer>
     <script src="/assets/js/prism.js"></script>
@@ -166,6 +167,29 @@ if __name__ == &quot;__main__&quot;:
             prev = random_color;
         })
 
+        var items = document.getElementsByClassName("item");
+        var itemDescs = document.getElementsByClassName("item-desc");
+        var itemHeaders = document.getElementsByClassName("item-header");
+
+        var audio = document.getElementById("heartbeat");
+
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener('mouseover', function() {
+                audio.play();
+            });
+        }
+
+        for (var i = 0; i < itemDescs.length; i++) {
+            itemDescs[i].addEventListener('mouseover', function() {
+                audio.play();
+            });
+        }
+
+        for (var i = 0; i < itemHeaders.length; i++) {
+            itemHeaders[i].addEventListener('mouseover', function() {
+                audio.play();
+            });
+        }
     </script>
 </body>
 
