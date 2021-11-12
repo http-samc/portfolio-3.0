@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/css/ttt.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/ttt.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+</head>
+<body style="background-color: #282d32;">
+    <div id="main">
+        <h1 style="font-family: Lato; color:aqua">TIC TAC TOE</h1>
+        <br><br>
+
+        <!-- 3*3 grid of Boxes -->
+        <input type="text" class="spot" id="b1" onclick="sendMove([0, 0])" readonly>
+        <input type="text" class="spot" id="b2" onclick="sendMove([0, 1])" readonly>
+        <input type="text" class="spot" id="b3" onclick="sendMove([0, 2])" readonly>
+        <br><br>
+
+        <input type="text" class="spot" id="b4" onclick="sendMove([1, 0])" readonly>
+        <input type="text" class="spot" id="b5" onclick="sendMove([1, 1])" readonly>
+        <input type="text" class="spot" id="b6" onclick="sendMove([1, 2])" readonly>
+        <br><br>
+
+        <input type="text" class="spot" id="b7" onclick="sendMove([2, 0])" readonly>
+        <input type="text" class="spot" id="b8" onclick="sendMove([2, 1])" readonly>
+        <input type="text" class="spot" id="b9" onclick="sendMove([2, 2])" readonly>
+
+        <!-- Grid end here  -->
+        <br><br><br>
+
+        <!-- Button to reset game -->
+        <button id="reset" onclick="restartGame()">
+            Reset
+        </button>
+
+        <br><br>
+
+    </div>
+</body>
+
+</html>

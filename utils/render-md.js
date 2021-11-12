@@ -97,8 +97,6 @@ function render(root, output, template, preprocessor) {
       htmlFragment = marked(markdown);
       publicPath = path.replace(root, output).slice(0, -3) + '.html';
       page = templateText.replace("${markdown}$", htmlFragment);
-      // Rest of reg exp w/ fragment (get inner path, read file, replace call with read html)
-      // DomPurify
       write(publicPath, page);
     });
 }

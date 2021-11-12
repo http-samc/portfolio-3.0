@@ -53,21 +53,59 @@
     </nav>
     <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
         <div id="dynamic" style="width: 50%;max-width: 900px;min-width: 300px;margin-top: 30px;">
-            <h1 id="caseel">CasEel</h1>
-<p align="center">A Chrome Extension for autosaving UIUC Netmath notebooks.</p>
+            <h1 id="tic-tac-toe">Tic Tac Toe</h1>
+<p align="center">A 2-Player web app for competitive Tic Tac Toe!</p>
 
-<h2 id="it-all-started-with-lost-homework">It All Started With Lost Homework...</h2>
-<p>After a long night of work for my Calc III class offered at my high school via the <a href="https://netmath.illinois.edu/">University of Illinois&#39; NetMath system</a>, I fell asleep in my chair. Unfortunately, by the time I woke up, my computer had shut itself off and the <a href="https://www.wolfram.com/mathematica/">Mathematica</a> notebook that contained hours of work was lost with it. That&#39;s why I created CasEel, which, besides being a play on the NetMath system name (CAS-ILE), introduces autosaving functionality to the platform.</p>
-<h2 id="how-do-i-get-it">How Do I Get It?</h2>
-<p>Because NetMath/CAS-ILE is a web-based platform, CasEel is offered via a Chrome Extension and can be installed <a href="https://chrome.google.com/webstore/detail/caseel/flbmfehmclddmndggkkljocomalibaim">here</a> on the Chrome Webstore. Once installed (on any device that can run Google Chrome), it runs automatically on <code>courseware.illinois.edu</code>, saving every 30 seconds. The project is also open sourced on GitHub at <a href="https://github.com/http-samc/caseel">http-samc/CasEel</a></p>
-<p>Here&#39;s what the extension looks like - I had to scratch out some sensitive information and actual course content (since it is protected by UIUC copyright law), but the extension is still completely visible in the top right.</p>
-<img width="400" height="auto" style="border-radius: 5px;" src="/assets/img/caseel.png">
-
-<h2 id="what-i-learned">What I Learned</h2>
-<p>The frontend of this app was nothing new, I made the actual UI (though minimal) using Bootstrap 5 (which I already knew). However, this was the first Chrome Extension I&#39;ve ever created and deployed, so I learned a lot of the basics of interacting with Google&#39;s APIs and requesting permissions in the app&#39;s <code>manifest.json</code>.</p>
-<p>All in all, I think Google did a great job with creating a simple API - creating a Chrome Extension should feel right at home for anyone familiar with Node.</p>
-<h2 id="extras">Extras</h2>
-<p>If you&#39;re a NetMath student, I reccommend installing <a href="https://github.com/gabeclasson/">Gabe Classon</a>&#39;s <a href="https://chrome.google.com/webstore/detail/auto-ccm/dlgmdmfhbfloafhofedpblnahenmnikh">AutoCCM</a> - it automatically finds and typesets (Control + M) your explanations, saving you time and frustration.</p>
+<blockquote>
+<p>Tic Tac Toe is chess for intellectuals <cite>&mdash; Isaac Newton</cite></p>
+</blockquote>
+<h2 id="what-is-it">What is it?</h2>
+<p>After getting bored at lunch, my friends and I discovered the world of competitive Tic-Tac-Toe. We wanted a simple place to play that wouldn&#39;t get blocked on our school&#39;s WiFi, so I developed the app to host on this <a href="/tic-tac-toe">site</a>.</p>
+<h2 id="how-does-it-work">How does it work?</h2>
+<h3 id="endpoints--api-documentation">Endpoints &amp; API Documentation</h3>
+<p>This app doesn&#39;t use websockets for realtime processing. Instead, there are 3 endpoints.</p>
+<ol>
+<li><a href="/api/tic-tac-toe/create">/api/tic-tac-toe/create</a></li>
+</ol>
+<ul>
+<li>This endpoint lets you use a <code>GET</code> request to get back the following data:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;message&quot;: &quot;&lt;str&gt;&quot;,
+    &quot;id&quot;: &quot;&lt;str, game id&gt;&quot;
+}
+</code></pre>
+<ol start="2">
+<li><a href="/api/tic-tac-toe/play">/api/tic-tac-toe/play</a></li>
+</ol>
+<ul>
+<li>This endpoint lets you use a <code>POST</code> request (with the following schema) to make a move:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;&lt;str, game id&gt;&quot;,
+    &quot;spotClaimed&quot;: &quot;&lt;arr::int, len = 2, no idx with a val &gt; 2 (if playing 3 x 3), eg. [1, 1]&gt;
+}
+</code></pre>
+<ol start="3">
+<li><a href="/api/tic-tac-toe/view/:id">/api/tic-tac-toe/view/:id</a></li>
+</ol>
+<ul>
+<li>This endpoint lets you use a <code>GET</code> request to get back the following data:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;message&quot;: &quot;&lt;str&gt;&quot;,
+    &quot;board&quot;: &quot;&lt;arr::arr::int, 2D array representing the current 3 x 3 board&gt;&quot;
+}
+</code></pre>
+<ol start="4">
+<li><a href="/api/tic-tac-toe/reset/:id">/api/tic-tac-toe/reset/:id</a></li>
+</ol>
+<ul>
+<li>This endpoint lets you use a <code>GET</code> request to clear the board. It is useful for users who want to play multiple games but don&#39;t want to make new sessions every time.</li>
+</ul>
+<h3 id="general-notes">General Notes</h3>
+<p>The player creating the game via endpoint #1 has their IP stored to validate further requests and gets the first move as the <code>X</code> player. They can share their game link to their friend, who will get their IP stored to validate further requests and play as the <code>O</code> player. In this sense, games (once started) are functionally private. <code>lastModified</code> timestamps are stored to help prevent games from taking up dead space.</p>
+<p><em>frontend coming soon . . .</em></p>
 <h2 id="other-awesome-projects">Other Awesome Projects</h2>
 <div id="projects" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">

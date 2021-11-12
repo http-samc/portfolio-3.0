@@ -1,0 +1,42 @@
+/* 3*3 Grid */
+.spot {
+    width: 80px;
+    height: 52px;
+    margin: auto;
+    border: 1px solid gray;
+    border-radius: 6px;
+    font-size: 30px;
+    text-align: center;
+    background-color: cornflowerblue;
+}
+
+/* Reset Button */
+#reset {
+    box-sizing: border-box;
+    width: 95px;
+    height: 40px;
+    border: 1px solid dodgerblue;
+    margin: auto;
+    border-radius: 4px;
+    font-family: Verdana,
+        Geneva, Tahoma, sans-serif;
+
+    background-color: dodgerblue;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Main Container */
+#main {
+    text-align: center;
+}
+
+/* Game Instruction Text */
+#ins {
+    font-family: Verdana,
+        Geneva, Tahoma, sans-serif;
+
+    color: dodgerblue;
+    font-size: 17px;
+}
