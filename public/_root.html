@@ -24,7 +24,7 @@
         gtag('js', new Date());
         gtag('config', 'G-7JEJRR9VCC');
     </script>
-    <audio id="heartbeat" src="https://css-tricks.com/examples/SoundOnHover/audio/beep.mp3" preload="auto"></audio>
+    <!-- <audio id="heartbeat" src="https://css-tricks.com/examples/SoundOnHover/audio/beep.mp3" preload="auto"></audio> -->
 </head>
 
 <body style="font-family: Montserrat, sans-serif;">
@@ -286,42 +286,20 @@
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
         var links = document.getElementsByTagName('a');
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'LightSeaGreen', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin', 'LightYellow'];
-        var prev = "";
-        var secPrev = "";
-        var random_color = prev;
+        // Approved colors for our background
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
         Array.prototype.forEach.call(links, function (link) {
             if (link.style.color !== "") return
-            while (random_color === prev || random_color === secPrev)
-                random_color = colors[Math.floor(Math.random() * colors.length)];
-            link.style.color = random_color;
-            secPrev = prev;
-            prev = random_color;
-        })
+            colorIdx = Math.floor(Math.random() * colors.length);
+            link.style.color = colors[colorIdx]
+            colors.splice(colorIdx, 1);
 
-        // var items = document.getElementsByClassName("item");
-        // var itemDescs = document.getElementsByClassName("item-desc");
-        // var itemHeaders = document.getElementsByClassName("item-header");
-
-        // var audio = document.getElementById("heartbeat");
-
-        // for (var i = 0; i < items.length; i++) {
-        //     items[i].addEventListener('mouseover', function() {
-        //         audio.play();
-        //     });
-        // }
-
-        // for (var i = 0; i < itemDescs.length; i++) {
-        //     itemDescs[i].addEventListener('mouseover', function() {
-        //         audio.play();
-        //     });
-        // }
-
-        // for (var i = 0; i < itemHeaders.length; i++) {
-        //     itemHeaders[i].addEventListener('mouseover', function() {
-        //         audio.play();
-        //     });
-        // }
+            // Make sure we aren't limiting # of links by how many approved colors we have
+            if (colors.length === 0) {
+                colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+            }
+        });
     </script>
 </body>
 
