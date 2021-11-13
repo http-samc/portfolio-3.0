@@ -78,7 +78,7 @@ function getToken() {
             renderBoard();
         },
         error: () => {
-            $.notify("This game is full!", "error");
+            $.notify("This game is full! Don't worry, we made a new one for you - share this link 😃", "error");
         }
     });
 }

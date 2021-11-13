@@ -3,11 +3,28 @@
     width: 80px;
     height: 52px;
     margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
     border: 1px solid gray;
     border-radius: 6px;
     font-size: 30px;
     text-align: center;
     background-color: cornflowerblue;
+    color: firebrick;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 45px;
+}
+
+.spot::selection{
+    color: transparent;
+    background-color: transparent;
+}
+
+.spot:focus {
+    -webkit-box-shadow:inset 0px 0px 0px 5px goldenrod;
+    -moz-box-shadow:inset 0px 0px 0px 5px goldenrod;
+    box-shadow:inset 0px 0px 0px 5px goldenrod;
+    outline: none;
 }
 
 /* Reset Button */
@@ -18,18 +35,18 @@
     border: 1px solid dodgerblue;
     margin: auto;
     border-radius: 4px;
-    font-family: Verdana,
-        Geneva, Tahoma, sans-serif;
-
+    font-family: Lato, sans-serif;
     background-color: dodgerblue;
-    color: white;
+    color: firebrick;
     font-size: 20px;
+    font-weight: bolder;
     cursor: pointer;
 }
 
 /* Main Container */
 #main {
     text-align: center;
+    padding: 20px;
 }
 
 /* Game Instruction Text */

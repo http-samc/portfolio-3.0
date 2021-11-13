@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const { error } = require('console');
 
-// TODO utilize lastMove function...
+// TODO utilize lastMove function... && update notify css
 function read() {
     let data = fs.readFileSync('api/assets/tic-tac-toe.json');
     let json = JSON.parse(data);

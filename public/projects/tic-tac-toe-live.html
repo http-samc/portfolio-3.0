@@ -53,14 +53,16 @@
     </nav>
     <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
         <div id="dynamic" style="width: 50%;max-width: 900px;min-width: 300px;margin-top: 30px;">
-            <h1 id="tic-tac-toe">Tic Tac Toe</h1>
+            <h1 id="tic-tac-toe-live">Tic Tac Toe Live</h1>
 <p align="center">A 2-Player web app for competitive Tic Tac Toe!</p>
 
 <blockquote>
 <p>Tic Tac Toe is chess for intellectuals <cite>&mdash; Isaac Newton</cite></p>
 </blockquote>
 <h2 id="what-is-it">What is it?</h2>
-<p>After getting bored at lunch, my friends and I discovered the world of competitive Tic-Tac-Toe. We wanted a simple place to play that wouldn&#39;t get blocked on our school&#39;s WiFi, so I developed the app to host on this <a href="/tic-tac-toe">site</a>.</p>
+<p>After getting bored at lunch, my friends and I discovered the world of competitive Tic-Tac-Toe. We wanted a simple place to play that wouldn&#39;t get blocked on our school&#39;s WiFi, so I developed the app to host on this site.</p>
+<h2 id="how-do-i-play">How do I play?</h2>
+<p>Go to <a href="/ttt">https://www.smrth.dev/ttt</a> to create a new game. A unique game id will be added to your url. Take this unique game link and share it to another friend. This &quot;friend&quot; needs to be on a different device than you. If this isn&#39;t possible, open a tab on the same browser in Incognito mode. This is because the unique player tokens are stored in the browser&#39;s local storage.</p>
 <h2 id="how-does-it-work">How does it work?</h2>
 <h3 id="endpoints--api-documentation">Endpoints &amp; API Documentation</h3>
 <p>This app doesn&#39;t use websockets for realtime processing. Instead, there are 3 endpoints.</p>
@@ -68,7 +70,7 @@
 <li><a href="/api/tic-tac-toe/create">/api/tic-tac-toe/create</a></li>
 </ol>
 <ul>
-<li>This endpoint lets you use a <code>GET</code> request to get back the following data:</li>
+<li>This endpoint lets you use a <code>GET</code> request to recieve the following data:</li>
 </ul>
 <pre><code class="language-json">{
     &quot;message&quot;: &quot;&lt;str&gt;&quot;,
@@ -82,15 +84,16 @@
 <li>This endpoint lets you use a <code>POST</code> request (with the following schema) to make a move:</li>
 </ul>
 <pre><code class="language-json">{
+    &quot;token&quot;: &quot;&lt;str, unique player token&gt;&quot;,
     &quot;id&quot;: &quot;&lt;str, game id&gt;&quot;,
     &quot;spotClaimed&quot;: &quot;&lt;arr::int, len = 2, no idx with a val &gt; 2 (if playing 3 x 3), eg. [1, 1]&gt;
 }
 </code></pre>
 <ol start="3">
-<li><a href="/api/tic-tac-toe/view/:id">/api/tic-tac-toe/view/:id</a></li>
+<li><a href="/api/tic-tac-toe/view/:id/:token">/api/tic-tac-toe/view/:id/:token</a></li>
 </ol>
 <ul>
-<li>This endpoint lets you use a <code>GET</code> request to get back the following data:</li>
+<li>This endpoint lets you use a <code>GET</code> request to recieve the following data:</li>
 </ul>
 <pre><code class="language-json">{
     &quot;message&quot;: &quot;&lt;str&gt;&quot;,
@@ -98,14 +101,68 @@
 }
 </code></pre>
 <ol start="4">
-<li><a href="/api/tic-tac-toe/reset/:id">/api/tic-tac-toe/reset/:id</a></li>
+<li><a href="/api/tic-tac-toe/reset/:id/:token">/api/tic-tac-toe/reset/:id/:token</a></li>
 </ol>
 <ul>
-<li>This endpoint lets you use a <code>GET</code> request to clear the board. It is useful for users who want to play multiple games but don&#39;t want to make new sessions every time.</li>
+<li>This endpoint lets you use a <code>GET</code> request to clear the board. It is useful for users who want to play multiple games but don&#39;t want to make new games (new &quot;links&quot; and ids) every time. It returns the following data:</li>
 </ul>
+<pre><code class="language-json">{
+    &quot;message&quot;: &quot;&lt;str&gt;&quot;,
+}
+</code></pre>
+<ol start="5">
+<li><a href="/api/tic-tac-toe/auth/:id">/api/tic-tac-toe/auth/:id</a></li>
+</ol>
+<ul>
+<li>This endpoint lets you use a <code>GET</code> request to recieve a token, provided with a valid game id. If the game already has two players, you will get an error. The first player to request a token is the <code>X</code> player, and the second one is the <code>O</code> player. This token is required to view the game board, reset the game, and to make a move. Since it is unique to each player, it allows the server to differentiate between them so it knows what to markk.</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;message&quot;: &quot;&lt;str&gt;&quot;,
+    &quot;token&quot;: &quot;&lt;token&gt;&quot;
+}
+</code></pre>
+<h3 id="server-side-storage">Server Side Storage</h3>
+<p>Games are stored in a <code>json</code> file on the server running this site (unfortunately my server would crash quickly if I used something like <a href="https://www.mongodb.com/">mongo db</a>; fortunately this application is light enough that it practically does not make a difference). The schema is as follows:</p>
+<pre><code class="language-json">{
+    ...,
+    &quot;&lt;str, 12 digit game id&gt;&quot;: {
+        &quot;xPlayer&quot;: &quot;&lt;str, 8 digit player token&gt;&quot;,
+        &quot;oPlayer&quot;: &quot;&lt;str, 8 digit player token&gt;&quot;,
+        &quot;xTurn&quot;: &lt;bool, whether or not its X&#39;s turn&gt;,
+        // Spots claimed by X are marked &quot;X&quot;
+        // Spots claimed by Y are marked &quot;Y&quot;
+        // Unclaimed spots are null
+        &quot;board&quot;: [
+            [
+                null,
+                null,
+                null
+            ],
+            [
+                null,
+                null,
+                null
+            ],
+            [
+                null,
+                null,
+                null
+            ]
+        ],
+        &quot;lastMove&quot;: &quot;&lt;str, UTC Timestamp of the last move (by either player)&gt;&quot;
+    },
+    ...
+}
+</code></pre>
 <h3 id="general-notes">General Notes</h3>
-<p>The player creating the game via endpoint #1 has their IP stored to validate further requests and gets the first move as the <code>X</code> player. They can share their game link to their friend, who will get their IP stored to validate further requests and play as the <code>O</code> player. In this sense, games (once started) are functionally private. <code>lastModified</code> timestamps are stored to help prevent games from taking up dead space.</p>
-<p><em>frontend coming soon . . .</em></p>
+<p>Once a game is created, a token is requested. The user creating the game has their token stored in local browser storage so it can be sent with subsequent requests. This user can then, using their custom game link, share it to one other player (since Tic Tac Toe is 1 on 1). Upon opening this link, the player is assigned a token in a similar manner. From this point on, the game is now &quot;private&quot;, as only the parties with the game id <strong>and</strong> the correct token can view the board. Tokens are stored in local storage in the format <code>{ id, token }</code>, with the &quot;side&quot; of the player being stored as <code>{ id:whoami, side }</code>, where <code>id</code> is the game id and <code>side</code> is either <code>X</code> or <code>O</code>. This allows users have multiple games queued up (which they can play at any time via accessing the link and coordinating with the other player) without requiring active server-side connection in the meanwhile or a login system.</p>
+<p>The token system wasn&#39;t my first choice. Initially, I went with an IP-based system. However, I quickly found out when playing with friends at lunch that, because we were all on one school WiFi network, IP tracking wouldn&#39;t work. Though this involved more work, it made the project useful (for my circumstances) and was therefore a necessary step.</p>
+<p><code>lastModified</code> timestamps are stored to help prevent games from taking up dead space by removing inactive ones over time (<em>as of 11/12/21 they are collected but not yet implemented as research is still being done to determine the best intervals for deletion</em>).</p>
+<h2 id="frontend">Frontend</h2>
+<p>The game board is a simple 3 x 3 grid of <code>&lt;input&gt;</code> elements. They have a custom <code>goldenrod</code> border on focus and are <code>null</code> until filled by a player, at which point the player&#39;s marker is inserted using <code>firebrick</code> (which clashes nicely with the <code>cornflowerblue</code> background) colored text. The team markers also use the <code>Permanent Marker</code> font in order to introduce a more playful field. The status bar on top lets the user know whose turn it is, and notifications (provided via <a href="https://notifyjs.jpillora.com/">notify.js</a>) are used to provide further information.</p>
+<p><img src="/assets/img/ttt-live.png" alt="Tic Tac Toe Live UI"></p>
+<p>This was my first time using <code>window.localStorage</code>, and I&#39;m glad I did because it enabled a seamless experience when returning to games without having to deal with a login system. This was also my first time using <code>setInterval</code>, which was ridiculously simple to set up - I only needed to define my function and what interval to run it at (I run a 2500ms interval).</p>
+<p>Even though the rest of this site uses <a href="https://getbootstrap.com/docs/3.4/css/">Bootstrap.css</a>, I wanted to hone in on my low-level skills. So, the game page itself is all just simple CSS and JavaScript. That being said, I did use <a href="https://jquery.com/">jQuery</a> to simply finding elements and making requests to the API.</p>
 <h2 id="other-awesome-projects">Other Awesome Projects</h2>
 <div id="projects" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
@@ -175,7 +232,7 @@
 
 <div class="carousel-item" style="width:100%">
 <div class="slide-item">
-<h4 class="slide-header"><a href="/projects/Tic-Tac-Toe">Tic Tac Toe</a></h4>
+<h4 class="slide-header"><a href="/projects/Tic-Tac-Toe-Live">Tic Tac Toe Live</a></h4>
 <p class="slide-desc">A 2-Player web app for competitive Tic Tac Toe!</p>
 </div>
 </div>
@@ -208,7 +265,7 @@
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
         var links = document.getElementsByTagName('a');
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)'];
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'LightSeaGreen', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin', 'LightYellow'];
         var prev = "";
         var secPrev = "";
         var random_color = prev;
