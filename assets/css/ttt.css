@@ -1,7 +1,7 @@
 /* 3*3 Grid */
 .spot {
-    width: 80px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     margin: auto;
     margin-left: 5px;
     margin-right: 5px;
@@ -12,7 +12,7 @@
     background-color: cornflowerblue;
     color: firebrick;
     font-family: 'Permanent Marker', cursive;
-    font-size: 45px;
+    font-size: 35px;
 }
 
 .spot::selection{

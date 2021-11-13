@@ -65,7 +65,7 @@ This app doesn't use websockets for realtime processing. Instead, there are 3 en
 ```
 
 ### Server Side Storage
-Games are stored in a `json` file on the server running this site (unfortunately my server would crash quickly if I used something like [mongo db](https://www.mongodb.com/); fortunately this application is light enough that it practically does not make a difference). The schema is as follows:
+Games are stored in a `json` file on the server running this site (unfortunately my server would crash quickly if I used something like [mongo db](https://www.mongodb.com/); fortunately this application is light enough that it realistically does not make a difference). The schema is as follows:
 ```json
 {
     ...,

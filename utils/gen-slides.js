@@ -13,6 +13,7 @@ function genSlides(subdir) {
         lines = contents.split('\n');
         itemName = lines[0].replace('# ', '');
         url = itemName.replaceAll(' ', '-');
+        if (url.includes('tic-tac-toe')) url = url.lower();
         desc = lines[1].replace('<p align="center">', '').replace('</p>', '');
         if (firstIter) active = " active";
         else active = ""

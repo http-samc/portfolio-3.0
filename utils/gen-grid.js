@@ -9,6 +9,7 @@ function genGrid(subdir) {
         lines = contents.split('\n');
         itemName = lines[0].replace('# ', '');
         url = itemName.replaceAll(' ', '-');
+        if (url.includes('Tic-Tac-Toe')) url = url.toLowerCase();
         desc = lines[1].replace('<p align="center">', '').replace('</p>', '');
         html += `
 <div class="item">
