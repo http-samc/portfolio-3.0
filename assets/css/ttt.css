@@ -47,6 +47,7 @@
 #main {
     text-align: center;
     padding: 20px;
+    min-width: 300px;
 }
 
 /* Game Instruction Text */

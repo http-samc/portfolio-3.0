@@ -28,8 +28,12 @@ app.get('/ttt', function (req, res) {
 // any other page
 app.get('/:route*', function (req, res) {
     filePath = './public' + req.url;
+    altFilePath = './public' + req.url.toLowerCase();
     if (fs.existsSync(filePath+'.html'))
         res.sendFile(filePath + '.html', { root: __dirname });
+    else if (fs.existsSync(altFilePath + 'html')) {
+        res.sendFile(altFilePath + '.html', { root: __dirname });
+    }
     else {
         try {
             fs.accessSync(filePath);
