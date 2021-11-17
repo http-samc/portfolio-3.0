@@ -35,6 +35,10 @@ app.get('/math241.pdf', function (req, res) {
     res.sendFile('./static/math241.pdf', { root: __dirname });
 });
 
+app.get('/math241.md', function (req, res) {
+    res.sendFile('./static/math241.md', { root: __dirname });
+});
+
 // any other page
 app.get('/:route*', function (req, res) {
     filePath = './public' + req.url;
