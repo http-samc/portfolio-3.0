@@ -539,7 +539,7 @@ Then, by Gauss Green,  ${\iint_R f(x, y) \,dA = \int_{t_{low}}^{t_{high}} n(x(t)
 
 The area of ${R}$ is just ${Area_R = \iint_R 1 \,dA}$.
 
-The average value of ${f(x, y)}$ over a region ${R}$  is ${AverageValue_f = \frac{\iint_R f(x, y) ,dA}{\iint_R 1 \,dA}}$.
+The average value of ${f(x, y)}$ over a region ${R}$  is ${AverageValue_f = \frac{\iint_R f(x, y) \,dA}{\iint_R 1 \, dA}}$.
 
 The centroid of ${f(x, y)}$ over a uniform region ${R}$ with is ${Centroid_f = (\frac{\iint_R x \,dA}{\iint_R 1 \,dA}, \frac{\iint_R y \,dA}{\iint_R 1 \,dA})}$.
 
