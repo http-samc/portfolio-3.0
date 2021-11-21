@@ -547,19 +547,13 @@ The centroid of ${f(x, y)}$ over a region ${R}$ with density (given by ${d(x, y)
 
 ${Centroid_f = (\frac{\iint_R x\,d(x, y) \,dA}{\iint_R d(x,y) \,dA}, \frac{\iint_R y\,d(x,y) \,dA}{\iint_R d(x,y) \,dA})}$.
 
-
-
 ## Vector Fields
 
 ### What is it?
 
 Looks like a gradient field, but isn't guaranteed to come from a surface. Think of it as a body of water with currents/whirpool. It is defined to be the assignment of one vector to each point in the plane. For every ${(X, Y)}$ in the plane, there is a vector associated with it given by ${(m(x, y), n(x, y))}$.
 
-
-
 To classify a vector field as a gradient field, you can't have any ${(x, y)}$ s.t. ${Field = (m(x, y), n(x, y))\,\nexists}$.
-
-
 
 ${SlopeFields \subset VectorFields \,\&\, GradientFields \subset VectorFields}$
 
@@ -579,11 +573,7 @@ A point with all neighboring vectors point away from it is called a **source** (
 
 If you dropped a pebble in this body of water, how would it travel? A trajectory is a path ${x(t), y(t)}$ such that tangent vectors to the path are the field vectors ${(x'(t), y'(t) = Field(x(t), y(t)))}$.
 
-
-
 We tend to think globally, so when we want to go to a max we'd instinctively go in a straight line. However, a gradient field will follow the direction of greatest initial increase, meaning that we might not get the most efficent path towards a max.
-
-
 
 Euler's Method is useful for finding exact solutions to Differential Equations, but these trajectories are a great *approximation* - especially for the ones that can't be solved.
 
@@ -593,8 +583,6 @@ Modeling a differential equation as a vector field:
 
 ${ \frac{dy}{dx} = \frac{\Delta Y}{\Delta X} = \frac{y-x}{1} \therefore (\Delta X, \Delta Y) = (1, y-x)}$
 
-
-
 When doing this conversion, you might not get a nice looking vector field. To solve this:
 
 1. Normalize the vectors ${V \to U_V}$
@@ -603,19 +591,13 @@ When doing this conversion, you might not get a nice looking vector field. To so
    
    - Use guess and check to find ${\lambda}$
 
-
-
 ### Vector Fields Acting on a Curve
 
 Given a vector field ${Field = (m(x, y), n(x, y))}$ and a curve ${(x(t), y(t)); t_{low} \leq t \leq t_{high}}$.
 
-
-
 You only really need the vectors that are impacting the particle, so plot the parts of the field with their tails on the curve. This can be expressed as: 
 
 ${SubField \subset Field = (m(x(t), y(t), n(x(t), y(t))))}$.
-
-
 
 These field vectors can either push you forward/backward or push you left/right on the curve. We can understand these as:
 
