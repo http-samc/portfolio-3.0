@@ -7,8 +7,8 @@ function genSlides(subdir) {
 `;
     projectPaths = fs.readdirSync(`content/${subdir}`);
     firstIter = true;
-    projectPaths.forEach(function(path) {
-        if (path === "_root.md") return;
+    projectPaths.forEach(function (path) {
+        if (path === "_root.md" || !path.includes(".md")) return;
         contents = fs.readFileSync(`content/${subdir}/${path}`, 'utf-8');
         lines = contents.split('\n');
         itemName = lines[0].replace('# ', '');
@@ -26,7 +26,7 @@ function genSlides(subdir) {
 </div>
 </div>
 `
-    firstIter = false;
+        firstIter = false;
     });
     html += `
 </div>

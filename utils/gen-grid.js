@@ -3,8 +3,8 @@ const fs = require('fs');
 function genGrid(subdir) {
     var html = '<div class="grid-parent">';
     projectPaths = fs.readdirSync(`content/${subdir}`);
-    projectPaths.forEach(function(path) {
-        if (path === "_root.md") return
+    projectPaths.forEach(function (path) {
+        if (path === "_root.md" || !path.includes(".md")) return
         contents = fs.readFileSync(`content/${subdir}/${path}`, 'utf-8');
         lines = contents.split('\n');
         itemName = lines[0].replace('# ', '');
