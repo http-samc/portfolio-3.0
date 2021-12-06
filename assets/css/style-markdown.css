@@ -51,6 +51,7 @@ img:not(.ovr) {
     border-radius: 5px;
     width: 300px;
     height: auto;
+    border: 2px solid var(--bs-blue);
 }
 
 code {

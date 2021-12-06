@@ -1,5 +1,5 @@
 # CodeSwipe
-a gallery for the art of code 💞
+<p align="center">a gallery for the art of code 💞</p>
 
 Every day, developers around the world push billions of commits, deliberate on millions of issues, and work tirelessly to create amazing projects that transform the world around them. Unfortunately, there’s rarely an easy way for them to garner appreciation for their code. Though the apps, APIs, and libraries they create are beautiful in and of themselves, coding is an art form and deserves its own gallery.
 
@@ -35,12 +35,5 @@ View the original presentation [here](https://docs.google.com/presentation/d/1hb
 
 <br>
 
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeAuthPhone.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeAuthTablet.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipePhone.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeTablet.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeSwipe.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeCreate.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeLang.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeShare.png)
-![](https://raw.githubusercontent.com/http-samc/CodeSwipe/main/images/CodeSwipeFilter.png)
+${fragments/codeSwipeImgs.html}$
+
