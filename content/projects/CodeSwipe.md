@@ -5,8 +5,13 @@ Every day, developers around the world push billions of commits, deliberate on m
 
 That’s why made CodeSwipe, the premier platform to share code snippets with other developers. Our target audience is developers of all ages looking to experience code in a new way. Users can ‘swipe’ on posts, with ‘liked’ posts showing up in their history. To create their own posts, users can paste in a code snippet, define a language, and add an (optional) description with an (optional) GitHub repository name.
 
+Get the CodeSwipe on the [Play Store]()!
+
+
 ## What I Learned?
 This was the first truly collaborative mobile app I've done. I learned a lot (especially about merge conflicts). Overall, I found the Native Android experience to be pretty straightforward, though excessive at times (especially when it came to the project's file tree). It was fun to use Firebase for my backend and end up with a fully working and scaleable social media app.
+
+You can check out the source code on GitHub at [http-samc/CodeSwipe](https://github.com/http-samc/CodeSwipe).
 
 ## Authors
 1. [Samarth C.](https://github.com/http-samc)

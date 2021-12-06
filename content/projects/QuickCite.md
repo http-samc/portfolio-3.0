@@ -1,5 +1,5 @@
 # QuickCite
-<p align="center">A simple Python package for autogenerating MLA citations.</p>
+<p align="center">A simple Python package for autogenerating MLA citations 💨</p>
 
 ## It Started With Too Many Ads
 Have you ever had to create a bibliography for a school research paper? If you have, then you've almost certainly used a site like [EasyBib](https://www.easybib.com/). These sites are needlessly slow and rich... with ads. When I saw [Formatically](https://formatically.com/)'s citation engine, I knew I was onto something.
@@ -17,4 +17,4 @@ Though this project may appear to be a simple PyPI package, I really ended up le
 I also learned how to set up a UnitTest, which I did [here](https://github.com/http-samc/QuickCite/blob/main/TestQuickCite.py). Though I don't set these up for every project (since I believe there's a right place and a right time to do so), this was a case where I found having tests to be quite useful.
 
 ## Extras
-QuickCite is used by [Cut-It](/projects/Cut-It), where it provides `AutoCite` functionality.
+QuickCite is used by [@smrth/Cut-It](/projects/Cut-It), where it provides `AutoCite` functionality.

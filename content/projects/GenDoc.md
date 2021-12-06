@@ -1,11 +1,11 @@
 # GenDoc
-<p align="center">A popular & versatile Python documentation generator.</p>
+<p align="center">A popular & versatile Python documentation generator 📖</p>
 
 ## Why GenDoc
 GenDoc is a simple yet powerfull Python library, designed to be lightweight and produce intuitive documentation with a single command. Simply annotate your Python project with Docstrings and GenDoc will parse through and, using Abstract Syntax Trees, convert your documentation to Markdown - ready to be used in any project documentation.
 
 ## Installation
-GenDoc is available on PyPI as [GenDoc](https://pypi.org/project/GenDoc/), where it has over 20,000 downloads. It can be installed with pip:
+GenDoc is available on PyPI as [@smrth/GenDoc](https://pypi.org/project/GenDoc/), where it has over 20,000 downloads. It can be installed with pip:
 
 `$ pip install gendoc`
 
@@ -22,4 +22,4 @@ Flags are optional, and a full list can be found [here](https://github.com/http-
 This was the first CLI package I made with Python, so it was also my first time using argparse. Though I could've gone a different direction with this project, I'm glad I limited my library usage to the out-of-the-box libraries that come with Python. There are already other documentation generators like [Sphinx](https://www.sphinx-doc.org/en/master/), but I think the fact that Gendoc is so straightforward is what makes it stand out.
 
 ## Extras
-For some real-world examples, check out [Cut It](/projects/Cut-It)'s [documentation](https://github.com/http-samc/cut-it/blob/main/DOCS.md), [Tabroom-API](https://github.com/http-samc/tabroom-API)'s [project reference](https://github.com/http-samc/tabroom-API/blob/main/DOCS.md), and [2048.py](/projects/2048.py)'s [module documentation](https://github.com/http-samc/2048.py/blob/main/DOCS.md), which are both built using GenDoc.
+For some real-world examples, check out [@smrth/Cut It](/projects/Cut-It)'s [documentation](https://github.com/http-samc/cut-it/blob/main/DOCS.md), [@smrth/Tabroom-API](/projects/Tabroom-API)'s [project reference](https://github.com/http-samc/tabroom-API/blob/main/DOCS.md), and [@smrth/2048.py](/projects/2048.py)'s [module documentation](https://github.com/http-samc/2048.py/blob/main/DOCS.md), which are all built using GenDoc.

@@ -42,6 +42,10 @@ a {
     font-weight: 600;
 }
 
+summary {
+    color: var(--bs-green)
+
+}
 img:not(.ovr) {
     display: block;
     margin-left: auto;

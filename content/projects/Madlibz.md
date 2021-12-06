@@ -1,5 +1,5 @@
 # Madlibz
-<p align="center">A fun and simple Madlibs app, coded natively for Android!</p>
+<p align="center">A fun and simple Madlibs app, coded natively for Android 🗯</p>
 
 ## Madlibz is _____ (adjective)!
 Madlibz was created as a proof-of-concept for my understanding of native Android code. It does all the major things you'd expect an app to do:

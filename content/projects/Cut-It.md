@@ -1,5 +1,5 @@
 # Cut-It
-<p align="center">The speech and debate card-cutting tool of the future!</p>
+<p align="center">The speech and debate card-cutting tool of the future ✂️</p>
 
 ## There Has To Be A Better Way
 High school debate is ultra-competitive. Debaters competing nationally can very well spend thousands of dollars flying across the country to participate in [prestigious tournaments](https://ci.uky.edu/UKDebate/gold-pf-bid-tournaments) and face fierce competition. Even though there's certainly a performance aspect, debate is a research activity at its core.
@@ -25,7 +25,7 @@ That's why I invented Cut-It, a desktop applicaiton that makes formatting cards 
 
 ## What Does It Do?
 Cut-It speeds up your workflow in 3 key ways:
-1. AutoCut: Cut-It will generate an MLA & debate-grade citation (using [QuickCite](/projects/QuickCite)) and get the full text of your article with **only** a URL.
+1. AutoCut: Cut-It will generate an MLA & debate-grade citation (using [@smrth/QuickCite](/projects/QuickCite)) and get the full text of your article with **only** a URL.
 2. Custom Emphasis Levels: Cut-It offers 3 emphasis levels that can be fully customized to your liking (bolding, underlining, font-size, highlight color, etc.) that are accessible via shortcuts and buttons. These macros make formatting your evidence a breeze.
 3. Card History: The fastest way to cut a card is to not have to cut it in the first place. Debaters often reuse evidence, but recut the card simply because they couldn't find it. Cutting cards with Cut-It means that each card is locally saved to your device and searchable through Card History.
 

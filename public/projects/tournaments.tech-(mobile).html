@@ -53,20 +53,47 @@
     </nav>
     <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
-            <h1 id="codeswipe-terms--conditions">CodeSwipe <strong>Terms &amp; Conditions</strong></h1>
-<p>By downloading or using the app, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You’re not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages or make derivative versions. The app itself, and all the trademarks, copyright, database rights, and other intellectual property rights related to it, still belong to Samarth Chitgopekar.</p>
-<p>Samarth Chitgopekar is committed to ensuring that the app is as useful and efficient as possible. For that reason, we reserve the right to make changes to the app or to charge for its services, at any time and for any reason. We will never charge you for the app or its services without making it very clear to you exactly what you’re paying for.</p>
-<p>The CodeSwipe app stores and processes personal data that you have provided to us, to provide my Service. It’s your responsibility to keep your phone and access to the app secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that the CodeSwipe app won’t work properly or at all.</p>
-<p>You should be aware that there are certain things that Samarth Chitgopekar will not take responsibility for. Certain functions of the app will require the app to have an active internet connection. The connection can be Wi-Fi or provided by your mobile network provider, but Samarth Chitgopekar cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.</p>
-<p>If you’re using the app outside of an area with Wi-Fi, you should remember that the terms of the agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third-party charges. In using the app, you’re accepting responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the app, please be aware that we assume that you have received permission from the bill payer for using the app.</p>
-<p>Along the same lines, Samarth Chitgopekar cannot always take responsibility for the way you use the app i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, Samarth Chitgopekar cannot accept responsibility.</p>
-<p>With respect to Samarth Chitgopekar’s responsibility for your use of the app, when you’re using the app, it’s important to bear in mind that although we endeavor to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. Samarth Chitgopekar accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the app.</p>
-<p>At some point, we may wish to update the app. The app is currently available on Android &amp; iOS – the requirements for the both systems(and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. Samarth Chitgopekar does not promise that it will always update the app so that it is relevant to you and/or works with the Android &amp; iOS version that you have installed on your device. However, you promise to always accept updates to the application when offered to you, We may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.</p>
-<p><strong>Changes to This Terms and Conditions</strong></p>
-<p>I may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Terms and Conditions on this page.</p>
-<p>These terms and conditions are effective as of 2021-12-06</p>
-<p><strong>Contact Us</strong></p>
-<p>If you have any questions or suggestions about my Terms and Conditions, do not hesitate to contact me at <a href="mailto:&#99;&#104;&#105;&#x74;&#x67;&#x6f;&#112;&#101;&#107;&#x61;&#x72;&#x73;&#97;&#109;&#97;&#114;&#x74;&#x68;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#104;&#105;&#x74;&#x67;&#x6f;&#112;&#101;&#107;&#x61;&#x72;&#x73;&#97;&#109;&#97;&#114;&#x74;&#x68;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>.</p>
+            <h1 id="tournamentstech-mobile">tournaments.tech (mobile)</h1>
+<p align="center">The best debate rankings on the go 🏃‍♂️</p>
+
+<h2 id="what-is-it">What is it?</h2>
+<p><a href="http://tournaments.tech">tournaments.tech</a> is the largest and most accurate debate ranking system. We made this resource because there were no holistic rankings for the public forum national circuit, and existing record curations fail to collect sufficient quality data. Our speedy API delivers you the results from the latest national circuit tournaments just minutes after they occur, and you can stay up to date with instant push notifications. You can use our automated bid list (with ghost bid support) to check your progress on qualifying for the Tournament of Champions. Or, just run a quick search to get intel on your next opponent!</p>
+<p>Get the tournaments.tech app on the <a href="?">Play Store</a> or the <a href="?">App Store</a>, or access it anywhere at <a href="http://tournaments.tech">tournaments.tech</a>!</p>
+<h2 id="what-i-learned">What I learned?</h2>
+<p>I made this app with React Native. I already wrote the API to get the data from <a href="https://tabroom.com">tabroom</a> (available at <a href="https://github.com/http-samc/tabroom-API">http-samc/tabroom-API</a>) and have endpoints set up for the web version of the app (read more at <a href="/projects/tournaments.tech">@smrth/tournaments.tech</a>). This app centered around tying everything together into a mobile package. I maintained most of the styling from the website, and a lot of my work focused on lower level things like fetching raw json. Unlike my other mobile app projects that have more specific use cases, I built this system to scale extremely large, so I didn&#39;t want to use <a href="https://firebase.google.com">Firebase 🔥</a> because the fees stack up quickly. So, I had to make a lot of calls to my own API that pulls from my <a href="https://mongodb.cloud">mongodb</a> database.</p>
+<p>You can check out the source code on GitHub at <a href="https://github.com/tournaments.tech-mobile">http-samc/tournaments.tech-mobile</a>.</p>
+<h2 id="functionality">Functionality</h2>
+<ul>
+<li>Pulls from the Web API (so they&#39;re always in sync)</li>
+<li>Provides browser modal to access issue/feedback reporting</li>
+<li>All functional views are native screens</li>
+<li>Scaleable design (phones and tablets)</li>
+<li>Push notifications to alert users of added tournaments (provided by <a href="https://nativenotify.com/dashboard">native notify</a>)</li>
+<li>Search view by team code or name(s)</li>
+<li>Built in Bid List (rendered from markdown)</li>
+<li>About page that details when the dataset was last updated</li>
+<li>Custom leaderboard table component with pagination<ul>
+<li>uses display height to calculate the optimal amount of rows</li>
+<li>adds in dummy rows to prevent table from getting smaller on the last page (if ENTRIES % ROWS doesn&#39;t equal 0)</li>
+</ul>
+</li>
+<li>Swipe down to refresh Bid List and Leaderboard</li>
+</ul>
+<h2 id="ui">UI</h2>
+<details>
+    <summary>View full app preview</summary>
+    <img src="https://is5-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/6e/81/6e/6e816e88-8d41-a278-b4c8-9ec9fa9fed49/e8347d76-1176-4fbf-9464-254597e2b5a4_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.08.01.png/1284x2778bb.png">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/7f/55/19/7f551972-9bea-3894-e926-04ef6000ca2d/7eace1e3-3f9e-4b9d-aad7-15df09925907_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.11.47.png/1284x2778bb.png">
+    <img src="https://is3-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/7a/9c/57/7a9c5729-a853-4664-c66f-c90ac036328b/0c900d97-6280-4bc2-8927-1e089f160f98_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.08.23.png/1284x2778bb.png">
+    <img src="https://is5-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/80/ef/cc/80efccc6-464e-3de0-274c-c7ad1ccc23b1/394ca7d8-d270-4b81-a21c-999798193235_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.09.08.png/1284x2778bb.png">
+    <img src="https://is5-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/cc/67/da/cc67da99-7fb4-7e2c-c50c-8aab2c665889/304def8e-a979-4f42-b06f-212499ec33a5_Simulator_Screen_Shot_-_iPhone_13_Pro_Max_-_2021-12-05_at_19.21.27.png/1284x2778bb.png">
+    <img src="https://is4-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/e2/21/bd/e221bd9e-f724-c5e2-2335-ccc00aacee11/ac81b3f0-948d-4821-8fa7-c8061c0ee03d_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.09.51.png/1284x2778bb.png">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/2c/ca/59/2cca5901-0ead-386a-82e1-97700ca1501d/35ad12af-c8cb-4760-8c6a-8e718b4b5ace_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.10.13.png/1284x2778bb.png">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/91/d6/d8/91d6d8af-9332-68db-afe5-e10375ec8168/9e3ced37-7162-49e2-8d6a-a6c9f09211de_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.11.06.png/1284x2778bb.png">
+    <img src="https://is3-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/37/6a/13/376a138b-f770-c1b1-e4b1-671c6d7be216/556e895d-dfe3-4865-b852-50126a8c62fe_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.11.16.png/1284x2778bb.png">
+    <img src="https://is5-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/53/79/99/5379999c-e70f-b1b8-34f4-35ce61001ddc/786955af-2a3a-4c07-b61e-c1cdbcf770bb_Simulator_Screen_Shot_-_iphone_6.5_13pm_-_2021-12-05_at_19.10.21.png/1284x2778bb.png">
+</details>
+
 <h2 id="other-awesome-projects">Other Awesome Projects</h2>
 <div id="projects" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
