@@ -581,7 +581,7 @@ Euler's Method is useful for finding exact solutions to Differential Equations, 
 
 Modeling a differential equation as a vector field:
 
-${ \frac{dy}{dx} = \frac{\Delta Y}{\Delta X} = \frac{y-x}{1} \therefore (\Delta X, \Delta Y) = (1, y-x)}$
+${ \frac{dy}{dx} = \frac{\Delta Y}{\Delta X} = \frac{\Delta Y}{1} \therefore (\Delta X, \Delta Y) = (1, \Delta Y)}$
 
 When doing this conversion, you might not get a nice looking vector field. To solve this:
 
@@ -601,9 +601,9 @@ ${SubField \subset Field = (m(x(t), y(t), n(x(t), y(t))))}$.
 
 These field vectors can either push you forward/backward or push you left/right on the curve. We can understand these as:
 
-| Name                  | Description                                                                                                                                                                                                              | Formula                                                                                 |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| Forward/Backward Push | The push of the field vector in the direction of the tangent vector to the curve. *The net flow of the vector field **along** the curve* (is either counterclockwise, clockwise; can also balance out to 0).             | ${\frac{Field(x(t), y(t)) \cdot (x'(t), y'(t))}{\|(x'(t), y'(t))\|}(x'(t), y'(t))}$     |
-| Left/Right Push       | The push of the field vector in the direction of the vector normal to the curve. *The net flow of the vector field **across** the curve*. (is either inside to outside vs. outside to inside; can also balance out to 0) | $${\frac{Field(x(t), y(t)) \cdot (y'(t), -x'(t))}{\|(y'(t), -x'(t))\|}(y'(t), -x'(t))}$ |
+| Name                  | Description                                                                                                                                                                                                              | Formula                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Forward/Backward Push | The push of the field vector in the direction of the tangent vector to the curve. *The net flow of the vector field **along** the curve* (is either counterclockwise, clockwise; can also balance out to 0).             | ${\frac{Field(x(t), y(t)) \cdot (x'(t), y'(t))}{\|(x'(t), y'(t))\|}(x'(t), y'(t))}$    |
+| Left/Right Push       | The push of the field vector in the direction of the vector normal to the curve. *The net flow of the vector field **across** the curve*. (is either inside to outside vs. outside to inside; can also balance out to 0) | ${\frac{Field(x(t), y(t)) \cdot (y'(t), -x'(t))}{\|(y'(t), -x'(t))\|}(y'(t), -x'(t))}$ |
 
-Note that from here on out, we only really use the right footed normal vector (${(y(t), -x'(t))}$).
+Note that frozm here on out, we only really use the right footed normal vector (${(y(t), -x'(t))}$).
