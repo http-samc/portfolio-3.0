@@ -55,6 +55,7 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="gendoc">GenDoc</h1>
 <p align="center">A popular & versatile Python documentation generator 📖</p>
+<Python CLI/>
 
 <h2 id="why-gendoc">Why GenDoc</h2>
 <p>GenDoc is a simple yet powerfull Python library, designed to be lightweight and produce intuitive documentation with a single command. Simply annotate your Python project with Docstrings and GenDoc will parse through and, using Abstract Syntax Trees, convert your documentation to Markdown - ready to be used in any project documentation.</p>
@@ -192,21 +193,34 @@
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        var links = document.getElementsByTagName('a');
-        // Approved colors for our background
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
 
-        Array.prototype.forEach.call(links, function (link) {
-            if (link.style.color !== "") return
-            colorIdx = Math.floor(Math.random() * colors.length);
-            link.style.color = colors[colorIdx]
-            colors.splice(colorIdx, 1);
+        function colorIt(tagName) {
+            var links = document.getElementsByTagName(tagName);
 
-            // Make sure we aren't limiting # of links by how many approved colors we have
-            if (colors.length === 0) {
-                colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
-            }
-        });
+            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
+            Array.prototype.forEach.call(links, function (link) {
+                if (link.style.color !== "") return
+                colorIdx = Math.floor(Math.random() * colors.length);
+                link.style.color = colors[colorIdx]
+                colors.splice(colorIdx, 1);
+
+                // Make sure we aren't limiting # of links by how many approved colors we have
+                if (colors.length === 0) {
+                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                }
+            });
+        }
+
+        colorIt('a')
+        colorIt('button')
+
+    </script>
+    <script>
+        function showOnly(tag) {
+            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+        }
     </script>
 </body>
 

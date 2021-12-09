@@ -55,16 +55,18 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="blog-📝">blog 📝</h1>
 <p>I like to post about cool things I&#39;ve learned or done. A lot of these are also posted on my <a href="https://dev.to/httpsamc">dev.to</a>.</p>
-<div class="grid-parent">
-<div class="item">
+<div id="filterParent"><button class="filterBtn" onclick="showOnly('item')">#all</button><button class="filterBtn" onclick="showOnly('DevOps')">#DevOps</button><button class="filterBtn" onclick="showOnly('Optimization')">#Optimization</button></div><div class="grid-parent">
+<div class="item DevOps" onclick="window.open('/blog/Deploying-An-App:-5-Things-I-Learned')">
 <h4 class="item-header"><a href="/blog/Deploying-An-App:-5-Things-I-Learned">Deploying An App: 5 Things I Learned</a></h4>
 <p class="item-desc">python, devjournal, devops</p>
 </div>
+</a>
 
-<div class="item">
+<div class="item Optimization" onclick="window.open('/blog/In-Memory-Databases:-A-Practical-Demo')">
 <h4 class="item-header"><a href="/blog/In-Memory-Databases:-A-Practical-Demo">In-Memory Databases: A Practical Demo</a></h4>
 <p class="item-desc">redis, databases, python, programming</p>
 </div>
+</a>
 </div>
         </div>
     </section>
@@ -76,21 +78,34 @@
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        var links = document.getElementsByTagName('a');
-        // Approved colors for our background
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
 
-        Array.prototype.forEach.call(links, function (link) {
-            if (link.style.color !== "") return
-            colorIdx = Math.floor(Math.random() * colors.length);
-            link.style.color = colors[colorIdx]
-            colors.splice(colorIdx, 1);
+        function colorIt(tagName) {
+            var links = document.getElementsByTagName(tagName);
 
-            // Make sure we aren't limiting # of links by how many approved colors we have
-            if (colors.length === 0) {
-                colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
-            }
-        });
+            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
+            Array.prototype.forEach.call(links, function (link) {
+                if (link.style.color !== "") return
+                colorIdx = Math.floor(Math.random() * colors.length);
+                link.style.color = colors[colorIdx]
+                colors.splice(colorIdx, 1);
+
+                // Make sure we aren't limiting # of links by how many approved colors we have
+                if (colors.length === 0) {
+                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                }
+            });
+        }
+
+        colorIt('a')
+        colorIt('button')
+
+    </script>
+    <script>
+        function showOnly(tag) {
+            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+        }
     </script>
 </body>
 

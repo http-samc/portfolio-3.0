@@ -1,5 +1,6 @@
 # tournaments.tech
 <p align="center">The most popular (and accurate) debate ranking site 🏆</p>
+<Website/>
 
 ## It Started With A Problem
 High School debate didn't have any accurate ranking sites. [TheDebateWatch](https://thedebatewatch.com) provided spotty, inaccurate data and didn't include crucial statistics, such as team aliases and speaker points - not to mention the lack of a ranking system alltogether. Every other major high school sport has one, and a sport like debate, which has an ultra-competitive bid-based [Tournament of Champions](https://ci.uky.edu/UKDebate/gold-pf-bid-tournaments) shouldn't be any different. That's why I created [Tournaments.Tech](http://tournaments.tech), the best debate ranking + database site that leverages the [@smrth/Tabroom-API](/projects/tabroom-API) that now has over **100,000** hits.

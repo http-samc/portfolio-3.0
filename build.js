@@ -1,6 +1,6 @@
 // Build any dynamic fragments
-const slides = require('./utils/gen-slides');
-const grid = require('./utils/gen-grid');
+const slides = require('./hooks/gen-slides');
+const grid = require('./hooks/gen-grid');
 
 slides.genSlides('blog');
 slides.genSlides('projects');
@@ -9,7 +9,7 @@ grid.genGrid('blog');
 grid.genGrid('projects');
 
 // Now, build all html pages to ./public
-const render = require('./utils/render-md');
+const render = require('./hooks/render-md');
 
 render.render('content', 'public', 'templates/base.html', function(path, markdown) {
     // Custom preprocessing before marked.js (must always return ONLY markdown, even if no processing is done)

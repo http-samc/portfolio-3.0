@@ -55,6 +55,7 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="in-memory-databases-a-practical-demo">In-Memory Databases: A Practical Demo</h1>
 <p align="center">redis, databases, python, programming</p>
+<Optimization/>
 
 <p><em>Note: this post was originally published on my dev.to <a href="https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp">here</a> on 8/8/21</em></p>
 <p>Many of you might&#39;ve heard a thing or two about <a href="https://redis.io/">Redis</a>, an in-memory database that enables super fast reads and writes. But why is this?</p>
@@ -314,21 +315,34 @@ Finished with a net delta of 17.438135 seconds saved! (Runtime: 73.684126 sec.)
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        var links = document.getElementsByTagName('a');
-        // Approved colors for our background
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
 
-        Array.prototype.forEach.call(links, function (link) {
-            if (link.style.color !== "") return
-            colorIdx = Math.floor(Math.random() * colors.length);
-            link.style.color = colors[colorIdx]
-            colors.splice(colorIdx, 1);
+        function colorIt(tagName) {
+            var links = document.getElementsByTagName(tagName);
 
-            // Make sure we aren't limiting # of links by how many approved colors we have
-            if (colors.length === 0) {
-                colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
-            }
-        });
+            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
+            Array.prototype.forEach.call(links, function (link) {
+                if (link.style.color !== "") return
+                colorIdx = Math.floor(Math.random() * colors.length);
+                link.style.color = colors[colorIdx]
+                colors.splice(colorIdx, 1);
+
+                // Make sure we aren't limiting # of links by how many approved colors we have
+                if (colors.length === 0) {
+                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                }
+            });
+        }
+
+        colorIt('a')
+        colorIt('button')
+
+    </script>
+    <script>
+        function showOnly(tag) {
+            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+        }
     </script>
 </body>
 

@@ -55,6 +55,7 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="tabroom-api">Tabroom-API</h1>
 <p align="center">A revolutionary API for scraping and parsing tabroom.com 🔍</p>
+<API Python DataScience/>
 
 <h2 id="whats-tabroom">What&#39;s Tabroom?</h2>
 <p>Glad you asked. <a href="https://tabroom.com">Tabroom.com</a> is widely regarded as the &#39;de facto&#39; tournament hosting site for all divisions of high-school and collegiate debate. There are tens of thousands of debaters across the nation (and increasingly across the world) who actively participate in competitions on this site. Unfortunately, the record of their success is limited at best. This is largely due to Tabroom&#39;s fault - they fail to standardize and archive data. To achieve this goal, a site scraper is required.</p>
@@ -212,21 +213,34 @@
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        var links = document.getElementsByTagName('a');
-        // Approved colors for our background
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
 
-        Array.prototype.forEach.call(links, function (link) {
-            if (link.style.color !== "") return
-            colorIdx = Math.floor(Math.random() * colors.length);
-            link.style.color = colors[colorIdx]
-            colors.splice(colorIdx, 1);
+        function colorIt(tagName) {
+            var links = document.getElementsByTagName(tagName);
 
-            // Make sure we aren't limiting # of links by how many approved colors we have
-            if (colors.length === 0) {
-                colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
-            }
-        });
+            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
+            Array.prototype.forEach.call(links, function (link) {
+                if (link.style.color !== "") return
+                colorIdx = Math.floor(Math.random() * colors.length);
+                link.style.color = colors[colorIdx]
+                colors.splice(colorIdx, 1);
+
+                // Make sure we aren't limiting # of links by how many approved colors we have
+                if (colors.length === 0) {
+                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                }
+            });
+        }
+
+        colorIt('a')
+        colorIt('button')
+
+    </script>
+    <script>
+        function showOnly(tag) {
+            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+        }
     </script>
 </body>
 

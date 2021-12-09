@@ -55,13 +55,14 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="tournamentstech-mobile">tournaments.tech (mobile)</h1>
 <p align="center">The best debate rankings on the go 🏃‍♂️</p>
+<MobileApp ReactNative JavaScript/>
 
 <h2 id="what-is-it">What is it?</h2>
 <p><a href="http://tournaments.tech">tournaments.tech</a> is the largest and most accurate debate ranking system. We made this resource because there were no holistic rankings for the public forum national circuit, and existing record curations fail to collect sufficient quality data. Our speedy API delivers you the results from the latest national circuit tournaments just minutes after they occur, and you can stay up to date with instant push notifications. You can use our automated bid list (with ghost bid support) to check your progress on qualifying for the Tournament of Champions. Or, just run a quick search to get intel on your next opponent!</p>
-<p>Get the tournaments.tech app on the <a href="?">Play Store</a> or the <a href="?">App Store</a>, or access it anywhere at <a href="http://tournaments.tech">tournaments.tech</a>!</p>
+<p>Get the tournaments.tech app on the <a href="?">Play Store</a> or the <a href="https://apps.apple.com/us/app/tournaments-tech/id1598829136">App Store</a>, or access it anywhere at <a href="http://tournaments.tech">tournaments.tech</a>!</p>
 <h2 id="what-i-learned">What I learned?</h2>
 <p>I made this app with React Native. I already wrote the API to get the data from <a href="https://tabroom.com">tabroom</a> (available at <a href="https://github.com/http-samc/tabroom-API">http-samc/tabroom-API</a>) and have endpoints set up for the web version of the app (read more at <a href="/projects/tournaments.tech">@smrth/tournaments.tech</a>). This app centered around tying everything together into a mobile package. I maintained most of the styling from the website, and a lot of my work focused on lower level things like fetching raw json. Unlike my other mobile app projects that have more specific use cases, I built this system to scale extremely large, so I didn&#39;t want to use <a href="https://firebase.google.com">Firebase 🔥</a> because the fees stack up quickly. So, I had to make a lot of calls to my own API that pulls from my <a href="https://mongodb.cloud">mongodb</a> database.</p>
-<p>You can check out the source code on GitHub at <a href="https://github.com/tournaments.tech-mobile">http-samc/tournaments.tech-mobile</a>.</p>
+<p>You can check out the source code on GitHub at <a href="https://github.com/http-samc/tournaments.tech-mobile">http-samc/tournaments.tech-mobile</a>.</p>
 <h2 id="functionality">Functionality</h2>
 <ul>
 <li>Pulls from the Web API (so they&#39;re always in sync)</li>
@@ -216,21 +217,34 @@
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        var links = document.getElementsByTagName('a');
-        // Approved colors for our background
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
 
-        Array.prototype.forEach.call(links, function (link) {
-            if (link.style.color !== "") return
-            colorIdx = Math.floor(Math.random() * colors.length);
-            link.style.color = colors[colorIdx]
-            colors.splice(colorIdx, 1);
+        function colorIt(tagName) {
+            var links = document.getElementsByTagName(tagName);
 
-            // Make sure we aren't limiting # of links by how many approved colors we have
-            if (colors.length === 0) {
-                colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
-            }
-        });
+            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
+            Array.prototype.forEach.call(links, function (link) {
+                if (link.style.color !== "") return
+                colorIdx = Math.floor(Math.random() * colors.length);
+                link.style.color = colors[colorIdx]
+                colors.splice(colorIdx, 1);
+
+                // Make sure we aren't limiting # of links by how many approved colors we have
+                if (colors.length === 0) {
+                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                }
+            });
+        }
+
+        colorIt('a')
+        colorIt('button')
+
+    </script>
+    <script>
+        function showOnly(tag) {
+            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+        }
     </script>
 </body>
 

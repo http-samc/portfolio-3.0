@@ -1,5 +1,6 @@
 # Deploying An App: 5 Things I Learned
 <p align="center">python, devjournal, devops</p>
+<DevOps/>
 
 *Note: this post was originally published on my dev.to [here](https://dev.to/httpsamc/test-post-1921) on 7/25/21*
 

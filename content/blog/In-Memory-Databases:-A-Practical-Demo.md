@@ -1,5 +1,6 @@
 # In-Memory Databases: A Practical Demo
 <p align="center">redis, databases, python, programming</p>
+<Optimization/>
 
 *Note: this post was originally published on my dev.to [here](https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp) on 8/8/21*
 

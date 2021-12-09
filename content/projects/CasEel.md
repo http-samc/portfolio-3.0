@@ -1,5 +1,6 @@
 # CasEel
 <p align="center">A Chrome Extension for autosaving UIUC Netmath notebooks 📝</p>
+<ChromeExtension JavaScript/>
 
 ## It All Started With Lost Homework...
 

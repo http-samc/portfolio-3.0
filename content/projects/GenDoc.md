@@ -1,5 +1,6 @@
 # GenDoc
 <p align="center">A popular & versatile Python documentation generator 📖</p>
+<Python CLI/>
 
 ## Why GenDoc
 GenDoc is a simple yet powerfull Python library, designed to be lightweight and produce intuitive documentation with a single command. Simply annotate your Python project with Docstrings and GenDoc will parse through and, using Abstract Syntax Trees, convert your documentation to Markdown - ready to be used in any project documentation.
