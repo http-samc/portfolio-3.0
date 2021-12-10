@@ -1,5 +1,5 @@
 # Holler
-<p align="center">what's on your mind 🗣</p>
+<p align="center">speak what's on your mind 🗣</p>
 <MobileApp ReactNative JavaScript/>
 
 ## What is it?

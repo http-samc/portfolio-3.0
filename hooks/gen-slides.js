@@ -19,7 +19,7 @@ function genSlides(subdir) {
         else active = ""
 
         html += `
-<div class="carousel-item${active}" style="width:100%">
+<div class="carousel-item${active}" style="width:100%" onclick="window.open('/${subdir}/${url}')">
 <div class="slide-item">
 <h4 class="slide-header"><a href="/${subdir}/${url}">${itemName}</a></h4>
 <p class="slide-desc">${desc}</p>
