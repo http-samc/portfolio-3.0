@@ -59,7 +59,7 @@
 
 <h2 id="what-is-it">What is it?</h2>
 <p><a href="http://tournaments.tech">tournaments.tech</a> is the largest and most accurate debate ranking system. We made this resource because there were no holistic rankings for the public forum national circuit, and existing record curations fail to collect sufficient quality data. Our speedy API delivers you the results from the latest national circuit tournaments just minutes after they occur, and you can stay up to date with instant push notifications. You can use our automated bid list (with ghost bid support) to check your progress on qualifying for the Tournament of Champions. Or, just run a quick search to get intel on your next opponent!</p>
-<p>Get the tournaments.tech app on the <a href="?">Play Store</a> or the <a href="https://apps.apple.com/us/app/tournaments-tech/id1598829136">App Store</a>, or access it anywhere at <a href="http://tournaments.tech">tournaments.tech</a>!</p>
+<p>Get the tournaments.tech app on the <a href="https://play.google.com/store/apps/details?id=dev.smrth.tech.tournaments">Play Store</a> or the <a href="https://apps.apple.com/us/app/tournaments-tech/id1598829136">App Store</a>, or access it anywhere at <a href="http://tournaments.tech">tournaments.tech</a>!</p>
 <h2 id="what-i-learned">What I learned?</h2>
 <p>I made this app with React Native. I already wrote the API to get the data from <a href="https://tabroom.com">tabroom</a> (available at <a href="https://github.com/http-samc/tabroom-API">http-samc/tabroom-API</a>) and have endpoints set up for the web version of the app (read more at <a href="/projects/tournaments.tech">@smrth/tournaments.tech</a>). This app centered around tying everything together into a mobile package. I maintained most of the styling from the website, and a lot of my work focused on lower level things like fetching raw json. Unlike my other mobile app projects that have more specific use cases, I built this system to scale extremely large, so I didn&#39;t want to use <a href="https://firebase.google.com">Firebase 🔥</a> because the fees stack up quickly. So, I had to make a lot of calls to my own API that pulls from my <a href="https://mongodb.cloud">mongodb</a> database.</p>
 <p>You can check out the source code on GitHub at <a href="https://github.com/http-samc/tournaments.tech-mobile">http-samc/tournaments.tech-mobile</a>.</p>
@@ -242,8 +242,9 @@
     </script>
     <script>
         function showOnly(tag) {
-            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
-            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+            for (let el of document.querySelectorAll('.item')) el.style.display = 'none'
+            //for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.display = 'inline'
         }
     </script>
 </body>

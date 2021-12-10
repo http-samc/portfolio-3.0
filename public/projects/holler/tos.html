@@ -66,7 +66,7 @@
 <p>I may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Terms and Conditions on this page.</p>
 <p>These terms and conditions are effective as of 2021-11-21</p>
 <p><strong>Contact Us</strong></p>
-<p>If you have any questions or suggestions about my Terms and Conditions, do not hesitate to contact me at <a href="mailto:&#99;&#104;&#105;&#x74;&#103;&#111;&#112;&#x65;&#107;&#x61;&#114;&#115;&#x61;&#x6d;&#97;&#x72;&#116;&#x68;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#99;&#104;&#105;&#x74;&#103;&#111;&#112;&#x65;&#107;&#x61;&#114;&#115;&#x61;&#x6d;&#97;&#x72;&#116;&#x68;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a>.</p>
+<p>If you have any questions or suggestions about my Terms and Conditions, do not hesitate to contact me at <a href="mailto:&#x63;&#104;&#x69;&#x74;&#103;&#111;&#x70;&#x65;&#x6b;&#97;&#114;&#115;&#97;&#109;&#97;&#x72;&#116;&#104;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x63;&#104;&#x69;&#x74;&#103;&#111;&#x70;&#x65;&#x6b;&#97;&#114;&#115;&#97;&#109;&#97;&#x72;&#116;&#104;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a>.</p>
 <h2 id="other-awesome-projects">Other Awesome Projects</h2>
 <div id="projects" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
@@ -214,8 +214,9 @@
     </script>
     <script>
         function showOnly(tag) {
-            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
-            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+            for (let el of document.querySelectorAll('.item')) el.style.display = 'none'
+            //for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.display = 'inline'
         }
     </script>
 </body>

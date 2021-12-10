@@ -55,7 +55,7 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="tournamentstech">tournaments.tech</h1>
 <p align="center">The most popular (and accurate) debate ranking site 🏆</p>
-<Website/>
+<Website Bootstrap5/>
 
 <h2 id="it-started-with-a-problem">It Started With A Problem</h2>
 <p>High School debate didn&#39;t have any accurate ranking sites. <a href="https://thedebatewatch.com">TheDebateWatch</a> provided spotty, inaccurate data and didn&#39;t include crucial statistics, such as team aliases and speaker points - not to mention the lack of a ranking system alltogether. Every other major high school sport has one, and a sport like debate, which has an ultra-competitive bid-based <a href="https://ci.uky.edu/UKDebate/gold-pf-bid-tournaments">Tournament of Champions</a> shouldn&#39;t be any different. That&#39;s why I created <a href="http://tournaments.tech">Tournaments.Tech</a>, the best debate ranking + database site that leverages the <a href="/projects/tabroom-API">@smrth/Tabroom-API</a> that now has over <strong>100,000</strong> hits.</p>
@@ -212,8 +212,9 @@
     </script>
     <script>
         function showOnly(tag) {
-            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
-            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+            for (let el of document.querySelectorAll('.item')) el.style.display = 'none'
+            //for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.display = 'inline'
         }
     </script>
 </body>

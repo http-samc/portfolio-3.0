@@ -134,7 +134,7 @@
 </div>
 </a>
 
-<div class="item Website" onclick="window.open('/projects/tournaments.tech')">
+<div class="item Website Bootstrap5" onclick="window.open('/projects/tournaments.tech')">
 <h4 class="item-header"><a href="/projects/tournaments.tech">tournaments.tech</a></h4>
 <p class="item-desc">The most popular (and accurate) debate ranking site 🏆</p>
 </div>
@@ -175,8 +175,9 @@
     </script>
     <script>
         function showOnly(tag) {
-            for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
-            for (let el of document.querySelectorAll('.' + tag)) el.style.visibility = 'visible'
+            for (let el of document.querySelectorAll('.item')) el.style.display = 'none'
+            //for (let el of document.querySelectorAll('.item')) el.style.visibility = 'hidden'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.display = 'inline'
         }
     </script>
 </body>
