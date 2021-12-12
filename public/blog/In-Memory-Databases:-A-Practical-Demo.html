@@ -55,7 +55,7 @@
         <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
             <h1 id="in-memory-databases-a-practical-demo">In-Memory Databases: A Practical Demo</h1>
 <p align="center">redis, databases, python, programming</p>
-<Optimization/>
+<Databases Redis/>
 
 <p><em>Note: this post was originally published on my dev.to <a href="https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp">here</a> on 8/8/21</em></p>
 <p>Many of you might&#39;ve heard a thing or two about <a href="https://redis.io/">Redis</a>, an in-memory database that enables super fast reads and writes. But why is this?</p>
@@ -281,14 +281,14 @@ Finished with a net delta of 17.438135 seconds saved! (Runtime: 73.684126 sec.)
 <div id="blog" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
 
-<div class="carousel-item active" style="width:100%" onclick="window.location.replace('/blog/Deploying-An-App:-5-Things-I-Learned')">
+<div class="carousel-item active" style="width:100%" onclick="window.open('/blog/Deploying-An-App:-5-Things-I-Learned', '_self')">
 <div class="slide-item">
 <h4 class="slide-header"><a href="/blog/Deploying-An-App:-5-Things-I-Learned">Deploying An App: 5 Things I Learned</a></h4>
 <p class="slide-desc">python, devjournal, devops</p>
 </div>
 </div>
 
-<div class="carousel-item" style="width:100%" onclick="window.location.replace('/blog/In-Memory-Databases:-A-Practical-Demo')">
+<div class="carousel-item" style="width:100%" onclick="window.open('/blog/In-Memory-Databases:-A-Practical-Demo', '_self')">
 <div class="slide-item">
 <h4 class="slide-header"><a href="/blog/In-Memory-Databases:-A-Practical-Demo">In-Memory Databases: A Practical Demo</a></h4>
 <p class="slide-desc">redis, databases, python, programming</p>
@@ -336,6 +336,21 @@ Finished with a net delta of 17.438135 seconds saved! (Runtime: 73.684126 sec.)
 
         colorIt('a')
         colorIt('button')
+
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
+        var items = document.getElementsByClassName('item');
+
+        Array.prototype.forEach.call(items, function (item) {
+            let colorIdx = Math.floor(Math.random() * colors.length);
+            item.style.backgroundImage = `-webkit-linear-gradient(30deg, #1e1e1e 50%, ${colors[colorIdx]} 50%)`
+
+            colors.splice(colorIdx, 1);
+
+            // Make sure we aren't limiting # of links by how many approved colors we have
+            if (colors.length === 0) {
+                colors = ['var(--bs-red)', 'var(--bs-orange)', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
+            }
+        });
 
     </script>
     <script>
