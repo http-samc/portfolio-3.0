@@ -18,7 +18,7 @@ function genGrid(subdir) {
         tagsAll = [...new Set(tagsAll.concat(tags))];
 
         html += `
-<div class="item ${tagsStr}" onclick="window.open('/${subdir}/${url}')">
+<div class="item ${tagsStr}" onclick="window.location.replace('/${subdir}/${url}')">
 <h4 class="item-header"><a href="/${subdir}/${url}">${itemName}</a></h4>
 <p class="item-desc">${desc}</p>
 </div>
