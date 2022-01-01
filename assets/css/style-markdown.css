@@ -60,8 +60,8 @@ a {
 
 summary {
     color: var(--bs-green)
-
 }
+
 img:not(.ovr) {
     display: block;
     margin-left: auto;
@@ -75,8 +75,8 @@ img:not(.ovr) {
 }
 
 code {
-    color: var(--bs-white);
-    background-color: #121212;
+    color: var(--bs-danger);
+    font-weight: bold;
     border-radius: 3;
     letter-spacing: .1ch;
 }
