@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>smrth.dev</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/style-markdown.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JEJRR9VCC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7JEJRR9VCC');
+    </script>
+    <!-- <audio id="heartbeat" src="https://css-tricks.com/examples/SoundOnHover/audio/beep.mp3" preload="auto"></audio> -->
+</head>
+
+<body style="font-family: Montserrat, sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-md d-md-flex align-items-md-center navigation-clean"
+        style="background: transparent;">
+        <div class="container"><a class="navbar-brand" href="/"
+                style="color: var(--bs-teal);font-size: xx-large;font-weight: 700;font-family: Montserrat, sans-serif;">smrth.dev</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"
+                style="border-style: none;border-color: var(--bs-blue);color: var(--bs-blue);"><span
+                    class="visually-hidden">Toggle navigation</span><span
+                    class="navbar-toggler-icon d-flex justify-content-center align-items-center"
+                    style="border-style: solid;background: transparent;"><i
+                        class="fa fa-ellipsis-v d-flex align-items-center" style="margin-top: 2px;"></i></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/#contact-🤝"
+                            style="color: var(--bs-pink);">contact</a>
+                    </li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/blog"
+                            style="color: orange">blog</a></li>
+                    <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link" href="/projects"
+                            style="color: var(--bs-purple);">projects</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="d-flex d-md-flex justify-content-center justify-content-md-center" id="dynamic-parent">
+        <div id="dynamic" style="width: 55%;max-width: 900px;min-width: 300px;margin-top: 30px;">
+            <h1 id="a-simple-pascals-triangle-solution">A Simple Pascal&#39;s Triangle Solution</h1>
+<p align="center">inthirtyseconds, coding-interview</p>
+<Coding-Interview InThirtySeconds/>
+
+<p><em>Note: this post was originally published on my dev.to <a href="https://dev.to/httpsamc/a-simple-pascals-triangle-solution-1jn2">here</a> on 1/1/22</em></p>
+<p>There&#39;s a well-known Google algorithm interview question out there that I think is a great beginner problem. For full discolsure, <a href="https://www.youtube.com/watch?v=Ap8Azsc2YT0">this</a> video inspired me to create this writeup.</p>
+<h2 id="the-prompt">The Prompt</h2>
+<p>Return the first <code>numRows</code> rows of <strong>Pascal&#39;s Triangle</strong>, a triangle where each number is the sum of the two numbers directly above it, as shown:</p>
+<p><img src="https://ds055uzetaobb.cloudfront.net/brioche/uploads/yLsqh65kki-pascals-triangle-5.png?width=1200" alt="Pascal&#39;s Triangle Image"></p>
+<p><em>credit: Brialliant.com (<a href="https://brilliant.org/wiki/pascals-triangle/">Hayes, Farhat, Vee</a>)</em></p>
+<h2 id="my-thought-process">My Thought Process</h2>
+<p>I like thinking of algorithm problems in math terminology, so that&#39;s what I&#39;ll do here. We&#39;ll start off hypothetical:</p>
+<ol>
+<li>Given Pascal&#39;s Triangle: <code>P = [[Z+]]</code></li>
+</ol>
+<ul>
+<li>Assume we somehow have the infinitely large Pascal&#39;s Triangle, it could be stored in a two dimensonal array of positive integers. Here, each nested array represents a row, starting at the very top and going to the bottom.</li>
+</ul>
+<ol start="2">
+<li>Let <code>N</code> (∀ <code>N ≥ 0</code>) be an index within <code>P</code>, s.t <code>P[N]</code> represents the <code>N+1</code>th row of Pascal&#39;s Triangle.</li>
+</ol>
+<ul>
+<li>We make this distinction because in programming, we use indicies (which start at 0). So, the 1st row is really represented by index 0, and so on.</li>
+</ul>
+<ol start="3">
+<li>Let <code>I</code> (∀ <code>I ≥ 0</code>) be an index within <code>P[N]</code>, s.t. <code>P[N][I]</code> represents the element in the <code>I+1</code>th column of the <code>N+1</code>th row of Pascal&#39;s Triangle.</li>
+</ol>
+<ul>
+<li>We make this distinction because in programming, we use indicies (which start at 0). So, the 1st column is really represented by index 0, and so on.</li>
+</ul>
+<ol start="4">
+<li>Therefore, the element <code>E</code> at <code>P[N][I] = P[N-1][I-1] + P[N-1][I]</code>.</li>
+</ol>
+<ul>
+<li>This is the key realization. What this is really saying is that the element at any position is the sum of the element in the previous row to the left and the element in the previous row to the right. The <code>N-1</code> index makes sense, since it gets us the row before the current one. But why the positions <code>I-1</code> and <code>I</code>? Look at a subsection of the Pascal&#39;s Triangle below, but with the numbers represented by their <strong>column indicies</strong>:</li>
+</ul>
+<pre><code>Row A:   0   1   2   3
+Row B: 0   1   2   3   4
+</code></pre>
+<ul>
+<li>This is the pattern-recognition that is key to this problem. I like to imagine chopping off the last element of <code>Row B</code> so that they&#39;re symmetrical, kind of like this:</li>
+</ul>
+<pre><code>Row C: 0   1   2   3
+Row D: 0   1   2   3
+</code></pre>
+<ul>
+<li>As you can see, we have three elements touching from the top row: the one directly above (<code>I</code>), the one above to the left (<code>I-1</code>), and the one above to the right (<code>I+1</code>). When we offset the triangle by that extra element, we &#39;push&#39; the right one out of contact (since each row adds one element). So, our 2 touching elements above can be found at <code>I-1</code> and <code>I</code>, what we used to create our definition.</li>
+</ul>
+<ol start="5">
+<li>Edge Cases: <code>E = 1</code> ∀ <code>I ≠ 0</code> ∪ <code>I ≠ N</code>.</li>
+</ol>
+<ul>
+<li>When there aren&#39;t 2 elements directly above an <code>E</code>, Pascal&#39;s Triangle dictates that we default to <code>E = 1</code> (we can see this on the very first row and the diagonals). We can handle the tip of the triangle and the left diagonal cases by having <code>E = 1</code> ∀ <code>I ≠ 0</code>, since they&#39;re all at the very beginning of their rows (index 0). We can handle the right diagonal with <code>E = 1</code> ∀ <code>I ≠ N</code>. We know that the <code>N</code>th row has <code>N+1</code> elements. So, the last element would be at the index <code>N</code> (subtract 1 from literal position to get index). Therefore, <code>I ≠ N</code> gets us all the elements except for the ones on the right diagonal (end of a row).</li>
+</ul>
+<h2 id="my-solution">My Solution</h2>
+<p>There are obviously many ways to solve this problem, all with their own various time and space complexities. This is the one that makes the most sense to me and corresponds to the breakdown I gave, written in Python 3.</p>
+<pre><code class="language-Python">def getPascalsTriangle(n: int) -&gt; &#39;list[list[int]]&#39;:
+
+    # Handle edge cases
+    if n &lt;= 0:
+        return []
+    elif n == 1:
+        return [[1]]
+    elif n == 2:
+        return [[1], [1, 1]]
+
+    # At this point, we have a triangle with &gt;= 3 rows
+    triangle: &#39;list[list[int]]&#39; = [[1], [1, 1]]
+
+    # Start building the required rows on top of the first 2
+    for i in range(2, n):
+
+        # Create a new row
+        row: list[int] = []
+
+        # The first element is always 1
+        row.append(1)
+
+        # Every element here has two elements above it, so we can
+        # use the sum of those to calculate its value
+        for j in range(1, i):
+            row.append(triangle[i-1][j-1] + triangle[i-1][j])
+
+        # The last element is always 1
+        row.append(1)
+
+        # Add the new row to the triangle
+        triangle.append(row)
+
+    # Return the triangle
+    return triangle
+
+if __name__ == &#39;__main__&#39;:
+    # Pretty printed tester for Pascal&#39;s Triangle method
+    numRows: int = 10
+    triangle: &#39;list[list[int]]&#39; = getPascalsTriangle(numRows)
+
+    for row in triangle:
+        for col in row:
+            print(col, end=&#39; &#39;)
+        print()
+</code></pre>
+<h2 id="other-awesome-posts">Other Awesome Posts</h2>
+<div id="blog" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
+
+<div class="carousel-item active" style="width:100%" onclick="window.open('/blog/A-Simple-Pascal's-Triangle-Solution', '_self')">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/A-Simple-Pascal's-Triangle-Solution">A Simple Pascal's Triangle Solution</a></h4>
+<p class="slide-desc">inthirtyseconds, coding-interview</p>
+</div>
+</div>
+
+<div class="carousel-item" style="width:100%" onclick="window.open('/blog/Deploying-An-App:-5-Things-I-Learned', '_self')">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/Deploying-An-App:-5-Things-I-Learned">Deploying An App: 5 Things I Learned</a></h4>
+<p class="slide-desc">python, devjournal, devops</p>
+</div>
+</div>
+
+<div class="carousel-item" style="width:100%" onclick="window.open('/blog/In-Memory-Databases:-A-Demo', '_self')">
+<div class="slide-item">
+<h4 class="slide-header"><a href="/blog/In-Memory-Databases:-A-Demo">In-Memory Databases: A Demo</a></h4>
+<p class="slide-desc">redis, databases, python</p>
+</div>
+</div>
+
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#blog" data-bs-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#blog" data-bs-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+        </div>
+    </section>
+    <footer class="footer-dark" style="background: transparent;">
+        <div class="container">
+            <p class="copyright">created with 💙 & ☕ by <a href="/">@smrth</a></p>
+        </div>
+    </footer>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+
+        function colorIt(tagName) {
+            var links = document.getElementsByTagName(tagName);
+
+            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+
+            Array.prototype.forEach.call(links, function (link) {
+                if (link.style.color !== "") return
+                colorIdx = Math.floor(Math.random() * colors.length);
+                link.style.color = colors[colorIdx]
+                colors.splice(colorIdx, 1);
+
+                // Make sure we aren't limiting # of links by how many approved colors we have
+                if (colors.length === 0) {
+                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                }
+            });
+        }
+
+        colorIt('a')
+        colorIt('button')
+
+        var colors = ['var(--bs-red)', 'var(--bs-orange)', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
+        var items = document.getElementsByClassName('item');
+
+        Array.prototype.forEach.call(items, function (item) {
+            let colorIdx = Math.floor(Math.random() * colors.length);
+            item.style.backgroundImage = `-webkit-linear-gradient(30deg, #1e1e1e 50%, ${colors[colorIdx]} 50%)`
+
+            colors.splice(colorIdx, 1);
+
+            // Make sure we aren't limiting # of links by how many approved colors we have
+            if (colors.length === 0) {
+                colors = ['var(--bs-red)', 'var(--bs-orange)', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
+            }
+        });
+
+    </script>
+    <script>
+        function showOnly(tag) {
+            for (let el of document.querySelectorAll('.item')) el.style.display = 'none'
+            for (let el of document.querySelectorAll('.' + tag)) el.style.display = 'inline'
+        }
+    </script>
+</body>
+
+</html>
