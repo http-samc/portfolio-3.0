@@ -162,11 +162,13 @@
 
 .item {
     background: #1e1e1e;
-    background-image: -webkit-linear-gradient(30deg, #1e1e1e 50%, crimson 50%);
+    background-image: -webkit-linear-gradient(30deg, #1e1e1e 90%, crimson 10%);
     border-radius: 10px;
     padding: 7px;
     width: 100%;
     margin: 0px auto 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .item:hover {
@@ -177,10 +179,16 @@
 .item-header {
     margin-left: 10px;
     margin-top: 10px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .item-desc {
     margin-left: 10px;
+    text-overflow: ellipsis;
 }
 
 .slide-item {

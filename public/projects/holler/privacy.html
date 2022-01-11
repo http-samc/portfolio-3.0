@@ -84,7 +84,7 @@
 <p>I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.</p>
 <p>This policy is effective as of 2021-11-21</p>
 <p><strong>Contact Us</strong></p>
-<p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <a href="mailto:&#99;&#x68;&#x69;&#x74;&#103;&#x6f;&#x70;&#x65;&#x6b;&#97;&#114;&#x73;&#97;&#x6d;&#x61;&#114;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#99;&#x68;&#x69;&#x74;&#103;&#x6f;&#x70;&#x65;&#x6b;&#97;&#114;&#x73;&#97;&#x6d;&#x61;&#114;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>.</p>
+<p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <a href="mailto:&#99;&#x68;&#105;&#x74;&#x67;&#111;&#112;&#x65;&#x6b;&#x61;&#x72;&#x73;&#97;&#109;&#x61;&#x72;&#x74;&#x68;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#99;&#x68;&#105;&#x74;&#x67;&#111;&#112;&#x65;&#x6b;&#x61;&#x72;&#x73;&#97;&#109;&#x61;&#x72;&#x74;&#x68;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a>.</p>
 <h2 id="other-awesome-projects">Other Awesome Projects</h2>
 <div id="projects" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
@@ -211,7 +211,7 @@
         function colorIt(tagName) {
             var links = document.getElementsByTagName(tagName);
 
-            var colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+            var colors = ['var(--bs-orange)', '#fdee00', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
 
             Array.prototype.forEach.call(links, function (link) {
                 if (link.style.color !== "") return
@@ -221,7 +221,7 @@
 
                 // Make sure we aren't limiting # of links by how many approved colors we have
                 if (colors.length === 0) {
-                    colors = ['var(--bs-red)', 'var(--bs-orange)', '#fdee00', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
+                    colors = ['var(--bs-orange)', '#fdee00', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'goldenrod', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'LemonChiffon', 'PaleGreen', 'Pink', 'Plum', 'Turquoise', 'Tomato', 'Moccasin'];
                 }
             });
         }
@@ -229,18 +229,18 @@
         colorIt('a')
         colorIt('button')
 
-        var colors = ['var(--bs-red)', 'var(--bs-orange)', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
+        var colors = ['var(--bs-orange)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
         var items = document.getElementsByClassName('item');
 
         Array.prototype.forEach.call(items, function (item) {
             let colorIdx = Math.floor(Math.random() * colors.length);
-            item.style.backgroundImage = `-webkit-linear-gradient(30deg, #1e1e1e 50%, ${colors[colorIdx]} 50%)`
+            item.style.backgroundImage = `-webkit-linear-gradient(45deg, #1e1e1e 90%, ${colors[colorIdx]} 10%)`
 
             colors.splice(colorIdx, 1);
 
             // Make sure we aren't limiting # of links by how many approved colors we have
             if (colors.length === 0) {
-                colors = ['var(--bs-red)', 'var(--bs-orange)', 'var(--bs-green)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'firebrick', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
+                colors = ['var(--bs-orange)', 'salmon', 'var(--bs-purple)', 'var(--bs-teal)', 'var(--bs-success)', 'dodgerblue', 'cornflowerblue', 'DarkViolet', 'Peru', 'SlateBlue', 'Tan', 'SandyBrown', 'Pink', 'Plum', 'Turquoise', 'Tomato'];
             }
         });
 
