@@ -19,7 +19,7 @@ function genGrid(subdir) {
 
         html += `
 <div class="item ${tagsStr}" onclick="window.open('/${subdir}/${url}', '_self')">
-<h4 class="item-header"><a href="/${subdir}/${url}" style="padding: 5px; line-height: 31px; border-radius: 10px">${itemName}</a></h4>
+<h4 class="item-header"><a href="/${subdir}/${url}" style="line-height: 31px; border-radius: 10px">${itemName}</a></h4>
 <p class="item-desc">${desc}</p>
 </div>
 </a>
