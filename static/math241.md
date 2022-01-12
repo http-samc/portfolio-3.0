@@ -608,11 +608,7 @@ These field vectors can either push you forward/backward or push you left/right 
 
 Note that frozm here on out, we only use the right footed normal vector (${(y(t), -x'(t))}$).
 
-
-
 # Lesson 6, 7
-
-
 
 ## Divergence & Rotation (2D Curl)
 
@@ -624,45 +620,27 @@ Recall Green's Theorem:
 
  ${\iint_R \frac{\partial n}{\partial x} - \frac{\partial m}{\partial y} dA = \int_{t_{low}}^{t_{high}} n(x(t), y(t)) ,y'(t) + m(x(t), y(t)) ,x'(t) ,dt}$
 
-
-
 Let the rotation field ${rotField(x, y) = \frac{\partial n}{\partial x} - \frac{\partial m}{\partial y}}$
 
 So ${\iint_R rotField(x, y) \,dA = \int_{t_{low}}^{t_{high}} n(x(t), y(t)) ,y'(t) + m(x(t), y(t)) ,x'(t) ,dt}$
 
-
-
 We call this the rotation field because we are using a 2D integral to go over the area and look at the contribution of our vector field at each individual point ("swirl") to find the net impact of the vector field over our region.
-
-
 
 Let the divergence field ${divField(x, y) = \frac{\partial n}{\partial x} + \frac{\partial m}{\partial y}}$
 
 ${\iint_R divField(x, y) \,dA = \int_{t_{low}}^{t_{high}} -n(x(t), y(t)) ,y'(t) + m(x(t), y(t)) ,x'(t) ,dt}$
 
-
-
 This is our Gauss Green for flow across, which is why we call it the divergence field. Imagine we have a bathtub with a faucet and a drain that is overflowing. You can measure how much water is flowing over the edge by subtracting the rate out from the drain from the rate in of the faucet. This is the double integral (left side) calculation, we are looking at the net effect of the sources and sinks on the interior of the tub. We could also find this out my measuring the water spilling over (eg. with a series of buckets) the lip of the tub (our region). This is the line integral (right side) calculation.
-
-
 
 ### Avoiding Computation
 
 If you want to know what the flow across/along is (not the specific value), you can calculate the respective integrand (${divField}$ or ${rotField}$) and analyze the sign (eg. if it is always positive, always negative, or incompressible--when the net flow is 0).
 
-
-
 Keep in mind you need to rewrite the appropriate Gauss Green formula, then plug in the value you just computed before making your interpertation, which might look like:
-
-
 
 > Since (${divField}$ or ${rotField}$) is **always** (pos. or negative) ${\forall}$ (x, y)  and there are no singularities for any (x, y), this integral is (pos. or negative) for any closed curve. Since our curve is a closed curve, the net flow of the vector field (along or across) is (with/against or inside to outside/outside to inside).
 
-
-
 If you don't get an integrand that is always a certain sign (or 0), then you'll have to actually do the computation. Fortuantely, you've already computed the integrand so you probably want to go with the double integral when solving. Remember to interpert your answer for full points!
-
-
 
 ### Proving the Flow of a Gradient Field Along a Closed Curve is  0
 
@@ -679,3 +657,33 @@ ${= 0}$
 So, the net flow of any well-behaved gradient field along a closed curve is always 0.
 
 ### Updating the Gradient Test
+
+
+
+### Singularities
+
+Let ${Field}$ be a vector field with a singularity. Say we want to measure the flow of ${Field}$ along a closed curve ${C}$.
+
+
+
+First, check if ${rotField}$ is ${0}$. If it is, the only swirl that can exist must come from the singularity. Thus, you can use a replacement curve ${C_1}$ s.t. all singularities enclosed by ${C}$ are also enclosed by ${C_1}$. Finally, you can compute the flow-along path integral using ${C_1}$, which you ideally want to make something simple (eg. ${(cos(t), sin(t))}$) for computation's sake.
+
+
+
+For a ${Field}$ with ${n}$ (${\forall \, n \geq 2}$) singularities, you can use ${C_1 ...C_n}$ replacement curves, all centered around their own singularity. Ideally, you want to use as small a radius as possible in order to avoid exceeding the boundaries of the original curve ${C}$, which could cause external singularities to be picked up.
+
+
+
+### A New Perspective
+
+Let ${\nabla}$ be a differential operator, defined as ${\nabla = (\frac {\partial} {\partial x}, \frac {\partial} {\partial y})}.$
+
+Let ${Field(x, y) = (m(x, y), n(x, y))}$ be a vector field.
+
+
+
+Then, TFAE:
+
+${divField(x, y) = \nabla \cdot Field(x, y) = (\frac {\partial} {\partial x}, \frac {\partial} {\partial y}) \cdot (m(x, y), n(x, y)) = \frac {\partial m} {\partial x} + \frac {\partial n} {\partial y}}$
+
+${rotField(x, y) = \begin{vmatrix} \frac {\partial} {\partial x} & \frac {\partial} {\partial y}\\ m & n \end{vmatrix} = \frac {\partial n} {\partial x} - \frac {\partial m} {\partial y}}$

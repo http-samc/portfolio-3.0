@@ -26,7 +26,7 @@ function genGrid(subdir) {
 `
     });
     html += '</div>'
-    filter = `<div id="filterParent"><button class="filterBtn" onclick="showOnly('item')">#all</button>`
+    filter = `<div id="filterParent"><button class="filterBtn" style="color: var(--bs-white); text-decoration: none; background-color: #121212; border-radius: 5px; padding: 3px 8px;" onclick="showOnly('item')">#all</button>`
     tagsAll.forEach((tag) => {
         if (tag === '') return
         filter += `<button class="filterBtn" onclick="showOnly('${tag}')">#${tag}</button>`
