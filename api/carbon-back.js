@@ -10,10 +10,10 @@ module.exports = function (app) {
     app.post("/api/carbon-back/order", async (req, res) => {
         try {
             // Getting data from client
-            let { amount, name } = req.body;
+            let { amount, uid } = req.body;
 
             // Simple validation
-            if (!amount || !name)
+            if (!amount || !uid)
                 return res.status(400).json({ message: "All fields are required" });
             amount = parseInt(amount);
 
@@ -22,7 +22,7 @@ module.exports = function (app) {
                 amount: Math.round(amount * 100),
                 currency: "USD",
                 payment_method_types: ["card"],
-                metadata: { name },
+                metadata: { uid },
             });
 
             // Extracting the client secret
@@ -56,11 +56,11 @@ module.exports = function (app) {
         }
         // Event when a payment is initiated
         if (event.type === "payment_intent.created") {
-            console.log(`${event.data.object.metadata.name} initated payment!`);
+            console.log(`${event.data.object.metadata.uid} initated payment!`);
         }
         // Event when a payment is succeeded
         if (event.type === "payment_intent.succeeded") {
-            console.log(`${event.data.object.metadata.name} succeeded payment!`);
+            console.log(`${event.data.object.metadata.uid} succeeded payment!`);
             // fulfilment
         }
         res.json({ ok: true });
