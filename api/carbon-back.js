@@ -21,7 +21,8 @@ const getAvailability = (seller) => {
 
 const fulfillOrder = (buyer, amount) => {
     try {
-        var credits = amount * rate;
+        var credits = amount * RATE;
+
         let buyerContract = {
             "start": Date.now(),
             "end": Date.now() + (1000 * 60 * 60 * 24 * 365),
@@ -30,9 +31,10 @@ const fulfillOrder = (buyer, amount) => {
             "rate": RATE,
         }
         // since we know capacity can be met, we know the buyer alwats gets this contract
+
+        let rawdata = JSON.parse(fs.readFileSync('api/assets/carbon-back.json'));
         rawdata[buyer].contracts.push(buyerContract);
 
-        let rawdata = fs.readFileSync('api/assets/carbon-back.json');
         for (const [uid, user] of Object.entries(rawdata)) {
             if (credits == 0) break; // order fulfilled
             if (user.userType == 'buyer' || user.capacity == 0 || getAvailability(user) == 0) continue; // user can't help us
@@ -70,6 +72,7 @@ const fulfillOrder = (buyer, amount) => {
 module.exports = function (app) {
     // Stripe set up
     app.post("/api/carbon-back/order", async (req, res) => {
+        console.log('Order received');
         try {
             // Getting data from client
             let { amount, uid } = req.body;
@@ -89,6 +92,8 @@ module.exports = function (app) {
 
             // Extracting the client secret
             const clientSecret = paymentIntent.client_secret;
+
+            fulfillOrder(uid, amount);
 
             // Sending the client secret as response
             res.json({ message: "Payment initiated", clientSecret });
@@ -121,16 +126,14 @@ module.exports = function (app) {
         }
         // Event when a payment is succeeded
         if (event.type === "payment_intent.succeeded") {
-            fulfillOrder(event.data.object.metadata.uid, event.data.object.amount / 100);
+            console.log("!")
         }
         res.json({ ok: true });
     });
 
     /*
     *   Endpoints
-    *  TODO: Handle creating contracts for both parties post stripe hook creation
     *  TODO: Handle changing capacity for a seller
-    *  TODO: Clientside, don't factor in expired contracts
     */
 
     // Sign up
@@ -204,7 +207,7 @@ module.exports = function (app) {
 
             res
                 .status(200)
-                .json({ wasSuccessful: true, message: "Logged In!" });
+                .json({ wasSuccessful: true, userType: rawdata[email].userType, message: "Logged In!" });
         }
         catch (e) {
             res
@@ -244,16 +247,28 @@ module.exports = function (app) {
     app.get('/api/carbon-back/capacity', async (req, res) => {
         try {
             let { email, password } = req.query;
-            if (!email || !password)
-                res.json({ wasSuccessful: false, message: "All fields are required." }).status(400);
+            if (!email || !password) {
+                res
+                    .status(400)
+                    .json({ wasSuccessful: false, message: "All fields are required." });
+                return;
+            }
 
             let rawdata = JSON.parse(fs.readFileSync('api/assets/carbon-back.json'));
 
-            if (!(email in rawdata) || rawdata[email].password !== password)
-                res.json({ wasSuccessful: false, message: "Incorrect Authentication." }).status(401);
+            if (!(email in rawdata) || rawdata[email].password !== password) {
+                res
+                    .status(401)
+                    .json({ wasSuccessful: false, message: "Incorrect Authentication." });
+                return;
+            }
 
-            else if (rawdata[email].userType !== 'seller')
-                res.json({ wasSuccessful: false, message: "You are not a seller." }).status(401);
+            else if (rawdata[email].userType !== 'seller') {
+                res
+                    .status(401)
+                    .json({ wasSuccessful: false, message: "You are not a seller." });
+                return;
+            }
 
             contracts = rawdata[email].contracts;
 
@@ -263,7 +278,9 @@ module.exports = function (app) {
                     creditsUsed += contracts[i].credits;
             }
 
-            res.json({ wasSuccessful: true, usage: creditsUsed, capacity: rawdata[email].capacity }).status(200);
+            res
+                .status(200)
+                .json({ wasSuccessful: true, usage: creditsUsed, capacity: rawdata[email].capacity });
         }
         catch (e) {
             res.json({ wasSuccessful: false, message: e.message }).status(500);
@@ -302,7 +319,7 @@ module.exports = function (app) {
                 rateSum += contracts[i].rate;
             }
 
-            res.status(200).json({ wasSuccessful: true, usd: usd, credits: credits, avg_rate: Math.round(rateSum / contracts.length) });
+            res.status(200).json({ wasSuccessful: true, usd: usd, credits: credits, avg_rate: Math.round(rateSum / contracts.length * 100) / 100 });
         }
         catch (e) {
             res.status(500).json({ wasSuccessful: false, message: e.message });
@@ -328,6 +345,36 @@ module.exports = function (app) {
             res
                 .status(200)
                 .json({ wasSuccessful: true, credits: credits });
+        }
+        catch (e) {
+            res
+                .status(500)
+                .json({ wasSuccessful: false, message: e.message });
+        }
+    });
+
+    // Get contracts
+    app.get('/api/carbon-back/:uid', async (req, res) => {
+        try {
+            let { uid } = req.params;
+            if (uid) {
+                let rawdata = JSON.parse(fs.readFileSync('api/assets/carbon-back.json'));
+                if (rawdata[uid]) {
+                    res.json({ wasSuccessful: true, contracts: rawdata[uid].contracts });
+                    return;
+                }
+                else {
+                    res
+                        .status(404)
+                        .json({ wasSuccessful: false, message: "User not found." });
+                    return;
+                }
+            }
+            else {
+                res
+                    .status(404)
+                    .json({ wasSuccessful: false, message: "Please supply a user." });
+            }
         }
         catch (e) {
             res
