@@ -9,6 +9,64 @@ const stripe = Stripe(SK_TEST);
 const express = require('express');
 const fs = require('fs');
 
+const getAvailability = (seller) => {
+    let capacity = seller.capacity;
+    let usage = 0;
+    for (const contract of seller.contracts) {
+        if (contract.end < Date.now()) continue;
+        usage += contract.credits;
+    }
+    return capacity - usage;
+}
+
+const fulfillOrder = (buyer, amount) => {
+    try {
+        var credits = amount * rate;
+        let buyerContract = {
+            "start": Date.now(),
+            "end": Date.now() + (1000 * 60 * 60 * 24 * 365),
+            "credits": credits,
+            "price": amount,
+            "rate": RATE,
+        }
+        // since we know capacity can be met, we know the buyer alwats gets this contract
+        rawdata[buyer].contracts.push(buyerContract);
+
+        let rawdata = fs.readFileSync('api/assets/carbon-back.json');
+        for (const [uid, user] of Object.entries(rawdata)) {
+            if (credits == 0) break; // order fulfilled
+            if (user.userType == 'buyer' || user.capacity == 0 || getAvailability(user) == 0) continue; // user can't help us
+            let creditsAvailable = getAvailability(user);
+            if (creditsAvailable >= credits) { // seller can fulfill remainder of the order
+                rawdata[uid].contracts.push({
+                    "start": Date.now(),
+                    "end": Date.now() + (1000 * 60 * 60 * 24 * 365),
+                    "credits": credits,
+                    "price": credits / RATE, // adjust price to reflect what's left
+                    "rate": RATE,
+                });
+                credits = 0;
+            }
+            else if (creditsAvailable < credits) { // seller can fullfil part of the order
+                credits -= creditsAvailable;
+                rawdata[uid].contracts.push({
+                    "start": Date.now(),
+                    "end": Date.now() + (1000 * 60 * 60 * 24 * 365),
+                    "credits": creditsAvailable,
+                    "price": creditsAvailable / RATE, // adjust price to reflect what's left
+                    "rate": RATE,
+                });
+            }
+        }
+        // Writing data after order fulfillment
+        fs.writeFileSync('api/assets/carbon-back.json', JSON.stringify(rawdata));
+        console.log('Done fulfilling order');
+    }
+    catch (e) {
+        console.log(e.message)
+    }
+}
+
 module.exports = function (app) {
     // Stripe set up
     app.post("/api/carbon-back/order", async (req, res) => {
@@ -63,8 +121,7 @@ module.exports = function (app) {
         }
         // Event when a payment is succeeded
         if (event.type === "payment_intent.succeeded") {
-            console.log(`${event.data.object.metadata.uid} succeeded payment!`);
-            // fulfilment TODO: call a function to update the database (no need to listen to the webhook we created)
+            fulfillOrder(event.data.object.metadata.uid, event.data.object.amount / 100);
         }
         res.json({ ok: true });
     });
@@ -255,5 +312,27 @@ module.exports = function (app) {
     // Current value of $1 in credits
     app.get('/api/carbon-back/rate', async (req, res) => {
         res.json({ wasSuccessful: true, rate: RATE }).status(200);
+    });
+
+    // Get network-wide credit availability
+    app.get('/api/carbon-back/availability', async (req, res) => {
+        try {
+            rawdata = JSON.parse(fs.readFileSync('api/assets/carbon-back.json'));
+            credits = 0;
+            for (const [uid, user] of Object.entries(rawdata)) {
+                if (user.userType === 'seller') {
+                    credits += getAvailability(user)
+                }
+            }
+
+            res
+                .status(200)
+                .json({ wasSuccessful: true, credits: credits });
+        }
+        catch (e) {
+            res
+                .status(500)
+                .json({ wasSuccessful: false, message: e.message });
+        }
     });
 }
