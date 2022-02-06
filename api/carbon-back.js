@@ -132,8 +132,7 @@ module.exports = function (app) {
     });
 
     /*
-    *   Endpoints
-    *  TODO: Handle changing capacity for a seller
+    *   Production Endpoints
     */
 
     // Sign up
@@ -151,7 +150,7 @@ module.exports = function (app) {
                 password: password,
                 userType: userType,
                 contracts: [],
-                capacity: 0, // only used for sellers
+                capacity: 500, // only used for sellers, default capacity is 0 but we made it 500 for demonstration purposes
             }
 
             let rawdata = JSON.parse(fs.readFileSync('api/assets/carbon-back.json'));
