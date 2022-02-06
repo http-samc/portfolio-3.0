@@ -1,16 +1,20 @@
 // Setting up Express
 const express = require('express');
 const fs = require('fs');
+const cors = require('cors');
 
 // Creating server and setting port, resource path
 var app = express();
 var port = process.env.PORT || 8080;
 app.use(express.static(__dirname));
+app.use(cors())
+app.use(express.json());
 
 // API middleware config
 require('./api/pypi-downloads')(app)
 require('./api/madlibz')(app)
 require('./api/tic-tac-toe')(app)
+require('./api/carbon-back')(app)
 
 /*
     Defining routes

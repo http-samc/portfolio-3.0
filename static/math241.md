@@ -539,7 +539,9 @@ Then, by Gauss Green,  ${\iint_R f(x, y) \,dA = \int_{t_{low}}^{t_{high}} n(x(t)
 
 The area of ${R}$ is just ${Area_R = \iint_R 1 \,dA}$.
 
-The average value of ${f(x, y)}$ over a region ${R}$  is ${AverageValue_f = \frac{\iint_R f(x, y) \,dA}{\iint_R 1 \, dA}}$.
+The average value of ${f(x, y)}$ over a region ${R}$  is
+
+${AverageValue_f = \frac{\iint_R f(x, y) \,dA}{\iint_R 1 \, dA}}$.
 
 The centroid of ${f(x, y)}$ over a uniform region ${R}$ with is ${Centroid_f = (\frac{\iint_R x \,dA}{\iint_R 1 \,dA}, \frac{\iint_R y \,dA}{\iint_R 1 \,dA})}$.
 
@@ -634,13 +636,13 @@ This is our Gauss Green for flow across, which is why we call it the divergence 
 
 ### Avoiding Computation
 
-If you want to know what the flow across/along is (not the specific value), you can calculate the respective integrand (${divField}$ or ${rotField}$) and analyze the sign (eg. if it is always positive, always negative, or incompressible--when the net flow is 0).
+If you want to know what the flow across/along is (not the specific value), you can calculate the respective integrand (${divField}$ or ${rotField}$) and analyze the sign (eg. if it is always positive, always negative, or incompressible/conservative when the net flow is 0).
 
 Keep in mind you need to rewrite the appropriate Gauss Green formula, then plug in the value you just computed before making your interpertation, which might look like:
 
 > Since (${divField}$ or ${rotField}$) is **always** (pos. or negative) ${\forall}$ (x, y)  and there are no singularities for any (x, y), this integral is (pos. or negative) for any closed curve. Since our curve is a closed curve, the net flow of the vector field (along or across) is (with/against or inside to outside/outside to inside).
 
-If you don't get an integrand that is always a certain sign (or 0), then you'll have to actually do the computation. Fortuantely, you've already computed the integrand so you probably want to go with the double integral when solving. Remember to interpert your answer for full points!
+If you don't get an integrand that is always a certain sign (or 0), then you'll have to actually do the computation. Fortuantely, you've already computed the integrand so you probably want to go with the double integral when solving. Remember to interpert your answer for a complete response.
 
 ### Proving the Flow of a Gradient Field Along a Closed Curve is  0
 
@@ -658,21 +660,13 @@ So, the net flow of any well-behaved gradient field along a closed curve is alwa
 
 ### Updating the Gradient Test
 
-
-
 ### Singularities
 
 Let ${Field}$ be a vector field with a singularity. Say we want to measure the flow of ${Field}$ along a closed curve ${C}$.
 
-
-
 First, check if ${rotField}$ is ${0}$. If it is, the only swirl that can exist must come from the singularity. Thus, you can use a replacement curve ${C_1}$ s.t. all singularities enclosed by ${C}$ are also enclosed by ${C_1}$. Finally, you can compute the flow-along path integral using ${C_1}$, which you ideally want to make something simple (eg. ${(cos(t), sin(t))}$) for computation's sake.
 
-
-
 For a ${Field}$ with ${n}$ (${\forall \, n \geq 2}$) singularities, you can use ${C_1 ...C_n}$ replacement curves, all centered around their own singularity. Ideally, you want to use as small a radius as possible in order to avoid exceeding the boundaries of the original curve ${C}$, which could cause external singularities to be picked up.
-
-
 
 ### A New Perspective
 
@@ -680,10 +674,30 @@ Let ${\nabla}$ be a differential operator, defined as ${\nabla = (\frac {\partia
 
 Let ${Field(x, y) = (m(x, y), n(x, y))}$ be a vector field.
 
-
-
 Then, TFAE:
 
 ${divField(x, y) = \nabla \cdot Field(x, y) = (\frac {\partial} {\partial x}, \frac {\partial} {\partial y}) \cdot (m(x, y), n(x, y)) = \frac {\partial m} {\partial x} + \frac {\partial n} {\partial y}}$
 
 ${rotField(x, y) = \begin{vmatrix} \frac {\partial} {\partial x} & \frac {\partial} {\partial y}\\ m & n \end{vmatrix} = \frac {\partial n} {\partial x} - \frac {\partial m} {\partial y}}$
+
+## Transforming 2D Integrals
+
+---
+
+### Change of Variables
+
+jacobian better called area conversion factor is a fudge factor.
+
+look for pythagorean identities in jacobian determinant.
+
+ACF to polar is always "r"
+
+GG w polar as shortcut
+
+components of jacob are gradient of x, gradient of y
+
+Slide 31 on ***quiz*** (area of parallelogram). use sys of eqn/elim to do by hand practice alg.
+
+use |jacob. det.| since area > 0 and conversion factor between pos. areas
+
+neg. jacob det. means we're reflecting as we map from one sys to another, not significant.

@@ -20,10 +20,13 @@
   "dependencies": {
     "badge-maker": "^3.3.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.1",
     "fs-extra": "^10.0.0",
     "marked": "^3.0.7",
     "request": "^2.88.2",
+    "stripe": "^8.202.0",
     "webpack": "^5.59.1"
   }
 }
