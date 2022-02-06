@@ -1,1 +1,30 @@
-{}
+{
+    "seller@gmail.com": {
+        "password": "1234",
+        "userType": "seller",
+        "contracts": [
+            {
+                "start": 1644163488267,
+                "end": 1675699488267,
+                "credits": 1,
+                "price": 25,
+                "rate": 0.04
+            }
+        ],
+        "capacity": 8
+    },
+    "buyer@gmail.com": {
+        "password": "1234",
+        "userType": "buyer",
+        "contracts": [
+            {
+                "start": 1644163488263,
+                "end": 1675699488263,
+                "credits": 1,
+                "price": 25,
+                "rate": 0.04
+            }
+        ],
+        "capacity": 0
+    }
+}
