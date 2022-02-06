@@ -6,6 +6,7 @@ const Stripe = require('stripe');
 const stripe = Stripe(SK_TEST);
 const express = require('express');
 
+// Stripe set up
 module.exports = function (app) {
     app.post("/api/carbon-back/order", async (req, res) => {
         try {
