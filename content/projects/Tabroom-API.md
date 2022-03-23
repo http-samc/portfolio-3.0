@@ -1,6 +1,13 @@
-# Tabroom-API
-<p align="center">A revolutionary API for scraping and parsing tabroom.com 🔍</p>
-<API Python DataScience/>
+---
+title: Tabroom-API
+description: A revolutionary API for scraping and parsing tabroom.com 🔍
+important: false
+cover: null
+tags:
+    - API
+    - Python
+    - DataScience
+---
 
 ## What's Tabroom?
 Glad you asked. [Tabroom.com](https://tabroom.com) is widely regarded as the 'de facto' tournament hosting site for all divisions of high-school and collegiate debate. There are tens of thousands of debaters across the nation (and increasingly across the world) who actively participate in competitions on this site. Unfortunately, the record of their success is limited at best. This is largely due to Tabroom's fault - they fail to standardize and archive data. To achieve this goal, a site scraper is required.

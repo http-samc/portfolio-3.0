@@ -1,6 +1,12 @@
-# GenDoc
-<p align="center">A popular & versatile Python documentation generator 📖</p>
-<Python CLI/>
+---
+title: GenDoc
+description: A popular & versatile Python documentation generator 📖
+important: false
+cover: null
+tags:
+    - Python
+    - CLI
+---
 
 ## Why GenDoc
 GenDoc is a simple yet powerfull Python library, designed to be lightweight and produce intuitive documentation with a single command. Simply annotate your Python project with Docstrings and GenDoc will parse through and, using Abstract Syntax Trees, convert your documentation to Markdown - ready to be used in any project documentation.
@@ -8,14 +14,14 @@ GenDoc is a simple yet powerfull Python library, designed to be lightweight and 
 ## Installation
 GenDoc is available on PyPI as [@smrth/GenDoc](https://pypi.org/project/GenDoc/), where it has over 20,000 downloads. It can be installed with pip:
 
-`$ pip install gendoc`
+` pip3 install gendoc`
 
 The project is also open sourced on GitHub at [http-samc/GenDoc](https://github.com/http-samc/gendoc).
 
 ## Use
 In your terminal, simply run:
 
-`$ gendoc <flags>`
+` gendoc <flags>`
 
 Flags are optional, and a full list can be found [here](https://github.com/http-samc/gendoc#you-can-also-use-any-of-the-following-flags-in-your-terminal-to-customize-your-output-optional). It's reccommended that you set up a [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) or something similar to run GenDoc and update your documentation for you automatically.
 

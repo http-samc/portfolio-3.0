@@ -1,6 +1,12 @@
-# CasEel
-<p align="center">A Chrome Extension for autosaving UIUC Netmath notebooks 📝</p>
-<ChromeExtension JavaScript/>
+---
+title: CasEel
+description: A Chrome Extension for autosaving UIUC Netmath notebooks 📝
+important: false
+cover: null
+tags:
+    - Chrome Extension
+    - JavaScript
+---
 
 ## It All Started With Lost Homework...
 
@@ -12,7 +18,7 @@ Because NetMath/CAS-ILE is a web-based platform, CasEel is offered via a Chrome 
 
 Here's what the extension looks like - I had to scratch out some sensitive information and actual course content (since it is protected by UIUC copyright law), but the extension is still completely visible in the top right.
 
-${fragments/caseel.html}$
+![CasEel Demo](https://lh3.googleusercontent.com/C6wmAZep50YIhiAfaM-BcgYLFDfP-d8UT07AZtVsOoLG9aUHBTx5e5HqHxmZ2p2_W9fTMv2j3Bb6HimV5rMJcx3-tf8=w640-h400-e365-rj-sc0x00ffffff)
 
 ## What I Learned
 

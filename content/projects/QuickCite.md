@@ -1,6 +1,12 @@
-# QuickCite
-<p align="center">A simple Python package for autogenerating MLA citations 💨</p>
-<Python CLI/>
+---
+title: QuickCite
+description: A simple Python package for autogenerating MLA citations 💨
+important: false
+cover: null
+tags:
+    - CLI
+    - Python
+---
 
 ## It Started With Too Many Ads
 Have you ever had to create a bibliography for a school research paper? If you have, then you've almost certainly used a site like [EasyBib](https://www.easybib.com/). These sites are needlessly slow and rich... with ads. When I saw [Formatically](https://formatically.com/)'s citation engine, I knew I was onto something.

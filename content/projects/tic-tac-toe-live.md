@@ -1,8 +1,15 @@
-# Tic Tac Toe Live
-<p align="center">A 2-Player web app for competitive Tic Tac Toe ❌⭕️</p>
-<Website Game JavaScript/>
+---
+title: Tic Tac Toe Live
+description: A 2-Player web app for competitive Tic Tac Toe ❌⭕️
+important: false
+cover: null
+tags:
+    - Website
+    - Game
+    - JavaScript
+---
 
-> Tic Tac Toe is chess for intellectuals <cite>&mdash; Isaac Newton (probably)</cite>
+> Tic Tac Toe is chess for smart people <cite>&mdash; Isaac Newton (probably)</cite>
 
 ## What is it?
 After getting bored at lunch, my friends and I discovered the world of competitive Tic-Tac-Toe. We wanted a simple place to play that wouldn't get blocked on our school's WiFi, so I developed the app to host on this site.

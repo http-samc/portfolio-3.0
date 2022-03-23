@@ -1,14 +1,12 @@
 ---
 title: Cut-It
 description: The speech and debate card-cutting tool of the future ✂️
+important: false
+cover: null
 tags:
     - Desktop App
     - Python
 ---
-
-# Cut-It
-<p align="center">The speech and debate card-cutting tool of the future ✂️</p>
-<DesktopApp Python/>
 
 ## There Has To Be A Better Way
 High school debate is ultra-competitive. Debaters competing nationally can very well spend thousands of dollars flying across the country to participate in [prestigious tournaments](https://ci.uky.edu/UKDebate/gold-pf-bid-tournaments) and face fierce competition. Even though there's certainly a performance aspect, debate is a research activity at its core.
@@ -46,9 +44,7 @@ The project is also open sourced on GitHub at [http-samc/Cut-It](https://github.
 ## What I Learned
 Cut-It uses a proper GUI framework, [PyQt5](https://pypi.org/project/PyQt5/), in order to power its desktop applications. I didn't have any prior experience with Qt, but [Adithya](https://www.linkedin.com/in/adithyav-/) (the R&D lead for Cut-It) reccommended that I use it because of its cross-platform nature (which allows us to deploy to both Windows and MacOS with one codebase).
 
-Because I knew that I was going to push updates, I designed an autoupdating framework that polled a backend to check for new versions of the app. Seen below, this allows the user to accept or deny the update (only if it is non-critical) while getting a fully-detailed breakdown of the update, including version number, date, bug fixes, new features, etc.
-
-![Cut It Updates](https://files.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MeP0lkifg4TDLtCdbc_%2F-MePZw8-i_f2kKXHMJyN%2F-MePo8XAC0k_TvXXvJ8j%2Fupdate-opt.png?alt=media&token=0e67ce9a-dac7-4511-85c6-c3b048c68357)
+Because I knew that I was going to push updates, I designed an autoupdating framework that polled a backend to check for new versions of the app. This allows the user to accept or deny the update (only if it is non-critical) while getting a fully-detailed breakdown of the update, including version number, date, bug fixes, new features, etc.
 
 I knew that I wanted Cut-It to work for anyone, so user customizeability was going to be a key factor. I wanted to store all data in a standard .json file, so I used [userpaths](https://pypi.org/project/userpaths/) to allow me to get a cross-platform reference to the current user's documents folder (where I could store the app data). From there, I set up a durable dictionary schema that allows me to store and apply all the user's settings/preferences. Here's what it looks like from their perspective:
 
