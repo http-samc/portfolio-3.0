@@ -1,6 +1,9 @@
 ---
 title: 'Deploying An App: 5 Things I Learned'
 description: null
+author: Samarth Chitgopekar
+date: 7/25/21
+source: https://dev.to/httpsamc/test-post-1921
 tags:
     - DevOps
     - Python
