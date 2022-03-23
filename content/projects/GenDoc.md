@@ -1,7 +1,7 @@
 ---
 title: GenDoc
 description: A popular & versatile Python documentation generator 📖
-important: false
+important: true
 cover: null
 tags:
     - Python

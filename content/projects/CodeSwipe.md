@@ -1,7 +1,7 @@
 ---
 title: CodeSwipe
 description: A gallery for the art of code 💞
-important: false
+important: true
 cover: null
 tags:
     - Android Native
