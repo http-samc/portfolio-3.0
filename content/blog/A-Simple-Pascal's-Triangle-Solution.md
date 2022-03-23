@@ -3,7 +3,7 @@ title: A Simple Pascal's Triangle Solution
 description: null
 author: Samarth Chitgopekar
 date: 1/1/22
-important: true
+important: false
 source: https://dev.to/httpsamc/a-simple-pascals-triangle-solution-1jn2
 cover: https://www.pewresearch.org/internet/wp-content/uploads/sites/9/2017/02/PI_2017.02.08_Algorithms_featured.png
 tags:

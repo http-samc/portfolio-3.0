@@ -3,7 +3,7 @@ title: 'In-Memory Databases: A Demo'
 description: null
 author: Samarth Chitgopekar
 date: 8/8/21
-important: true
+important: false
 source: https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp
 cover: https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg
 tags:
