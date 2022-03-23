@@ -1,3 +1,12 @@
+---
+title: 'Deploying An App: 5 Things I Learned'
+description: null
+tags:
+    - DevOps
+    - Python
+    - DevJournal
+---
+
 # Deploying An App: 5 Things I Learned
 <p align="center">python, devjournal, devops</p>
 <DevOps Python Devjournal/>
@@ -13,7 +22,7 @@
 Pretty quickly, some friends gave me their two cents and the program evolved into Cut-It. This was the first application I wanted to deploy to thousands of regular people. Here's what our latest beta version looked like:
 ![Cut-It Beta](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3rjej1yf0abx223li0yt.png)
 Finally, this summer, after months of work, I launched Cut-It 1.0, our first release version. If you thought the jump from Cuttr to Cut-It beta was cool, check this out:
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/68s3faqyz4imlfguhb3e.png)
+![Cut-It 1.0](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/68s3faqyz4imlfguhb3e.png)
 
 I'm aware many of you have no idea what makes this project useful because High School Debate tech isn't exactly commonplace in dev circles. Luckily that's not the point of this post. When deploying Cut-It, I had to go through several hurdles and frankly, if I were rebuilding this project from scratch, I would do it completely differently. My advice should apply to anyone, so that's the point of this writeup.
 </details>
