@@ -1,3 +1,11 @@
+---
+title: Cut-It
+description: The speech and debate card-cutting tool of the future ✂️
+tags:
+    - Desktop App
+    - Python
+---
+
 # Cut-It
 <p align="center">The speech and debate card-cutting tool of the future ✂️</p>
 <DesktopApp Python/>
