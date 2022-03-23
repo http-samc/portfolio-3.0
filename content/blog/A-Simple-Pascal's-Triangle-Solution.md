@@ -1,8 +1,14 @@
-# A Simple Pascal's Triangle Solution
-<p align="center">inthirtyseconds, coding-interview</p>
-<Coding-Interview InThirtySeconds/>
-
-*Note: this post was originally published on my dev.to [here](https://dev.to/httpsamc/a-simple-pascals-triangle-solution-1jn2) on 1/1/22*
+---
+title: A Simple Pascal's Triangle Solution
+description: null
+author: Samarth Chitgopekar
+date: 1/1/22
+source: https://dev.to/httpsamc/a-simple-pascals-triangle-solution-1jn2
+cover: https://www.pewresearch.org/internet/wp-content/uploads/sites/9/2017/02/PI_2017.02.08_Algorithms_featured.png
+tags:
+    - Coding Interview
+    - Algorithms
+---
 
 There's a well-known Google algorithm interview question out there that I think is a great beginner problem. For full discolsure, [this](https://www.youtube.com/watch?v=Ap8Azsc2YT0) video inspired me to create this writeup.
 

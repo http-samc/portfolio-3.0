@@ -1,8 +1,15 @@
-# In-Memory Databases: A Demo
-<p align="center">redis, databases, python</p>
-<Databases Redis Python/>
-
-*Note: this post was originally published on my dev.to [here](https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp) on 8/8/21*
+---
+title: 'In-Memory Databases: A Demo'
+description: null
+author: Samarth Chitgopekar
+date: 8/8/21
+source: https://dev.to/httpsamc/in-memory-databases-a-pratical-demo-4bmp
+cover: https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg
+tags:
+    - Redis
+    - Databases
+    - Python
+---
 
 Many of you might've heard a thing or two about [Redis](https://redis.io/), an in-memory database that enables super fast reads and writes. But why is this?
 
