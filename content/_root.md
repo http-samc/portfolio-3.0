@@ -2,7 +2,9 @@
 # I'm Samarth Chitgopekar
 ### a fullstack developer from 📍 Chicago, IL
 
+<br/>
 <p align="center"><img style="border-radius:50%" class="ovr" src="https://avatars.githubusercontent.com/u/67826352?s=200&v=4"/></p>
+<br/>
 
 ## hi 👋
 I'm Sam, a student at [Fremd High School](https://adc.d211.org/Domain/9) ('23). I first started coding at 12 years old to kill free time, but it quickly became more than a hobby for me. Today, in addition to developing, I spend my time:
